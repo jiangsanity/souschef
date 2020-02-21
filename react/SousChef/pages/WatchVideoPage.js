@@ -78,44 +78,31 @@ export default class WatchVideoPage extends React.Component {
         />
         <View style={styles.body}>
           <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>Step Two</Text>
-            <Text style={styles.sectionDescription}>
-              Edit <Text style={styles.highlight}>App.js</Text> to change this
-              screen and then come back to see your edits.
-            </Text>
+            <Text style={styles.sectionTitle}>Time: 45 mins </Text>
           </View>
           <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>See Your Changes</Text>
-            <Text style={styles.sectionDescription}>
-              <ReloadInstructions />
-            </Text>
+            <Text style={styles.sectionTitle}>Difficulty: Hard </Text>
           </View>
           <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>Debug</Text>
-            <Text style={styles.sectionDescription}>
-              <DebugInstructions />
-            </Text>
+            <Text style={styles.sectionTitle}>Nutrition: 550 Calories</Text>
           </View>
           <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>Learn More</Text>
-            <Text style={styles.sectionDescription}>
-              Read the docs to discover what to do next:
-            </Text>
+            <Text style={styles.sectionTitle}>Ingredients: </Text>
+            <Text> Beef, Puff Pastry, Mushrooms </Text>
           </View>
-          <LearnMoreLinks />
         </View>
-        <Text style={styles.instructions}>
+        {/* <Text style={styles.instructions}>
           {this.state.isReady ? 'Player is ready' : 'Player setting up...'}
         </Text>
         <Text style={styles.instructions}>Status: {this.state.status}</Text>
-        <Text style={styles.instructions}>Quality: {this.state.quality}</Text>
+        <Text style={styles.instructions}>Quality: {this.state.quality}</Text> */}
 
         {/* Show Progress */}
-        <Text style={styles.instructions}>
+        {/* <Text style={styles.instructions}>
           Progress: {Math.trunc(this.state.currentTime)}s ({Math.trunc(this.state.duration / 60)}:
           {Math.trunc(this.state.duration % 60)}s)
           {Platform.OS !== 'ios' && <Text> (Click Update Progress & Duration)</Text>}
-        </Text>
+        </Text> */}
 
         <Text style={styles.instructions}>
           {this.state.error ? 'Error: ' + this.state.error : ''}
