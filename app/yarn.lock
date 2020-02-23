@@ -929,6 +929,11 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@react-native-community/eslint-plugin/-/eslint-plugin-1.0.0.tgz#ae9a430f2c5795debca491f15a989fce86ea75a0"
 
+"@react-native-firebase/auth@^6.3.4":
+  version "6.3.4"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-6.3.4.tgz#b2f52a4e4cca308e3c169f33d1483de115abe0e2"
+  integrity sha512-Km3lOVlc/qZxPJHB2FtKqoM4g84zCq3gqtzjCi2U42QQd7Xxp0lzUhgedm4un8odkrrjmkNfrrwEDxTw5UG/Vg==
+
 "@sinonjs/commons@^1.7.0":
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/@sinonjs/commons/-/commons-1.7.1.tgz#da5fd19a5f71177a53778073978873964f49acf1"
@@ -4685,7 +4690,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   dependencies:
@@ -4730,6 +4735,13 @@ react-devtools-core@^3.6.3:
 react-is@^16.12.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.9.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
+
+react-native-youtube@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-youtube/-/react-native-youtube-2.0.0.tgz#f9789a43dbe7a6354d69c9b63d533499f2c6dca1"
+  integrity sha512-i21jL4kyp2epgV0d2gPSNQ0JvuVSwUL1t6CUzcXZZY7ezTSA0FB4kR9/cWpu/Nd3kkrt6WnZtGYuWKIfzbVbUw==
+  dependencies:
+    prop-types "^15.5.0"
 
 react-native@0.61.5:
   version "0.61.5"
