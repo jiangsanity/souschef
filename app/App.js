@@ -1,46 +1,58 @@
+import 'react-native-gesture-handler';
 import React, { useState, useEffect } from 'react';
-import {
-	StyleSheet,
-	View,
-	Text,
-	SafeAreaView,
-} from 'react-native';
-import MyPage from './components/MyPage';
-import YouTube from 'react-native-youtube';
+import { StyleSheet, Text } from 'react-native';
+import { NavigationContainer, StackActions } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './components/HomeScreen';
+import LoginScreen from './components/LoginScreen';
+import RegisterScreen from './components/RegisterScreen';
 
 const App = () => {
-	// const [ready, setReady] = useState(true);
-	// const [state, setState] = useState(null);
-	// const [quality, setQuality] = useState(null);
-	// const [error, setError] = useState(null);
+	const Stack = createStackNavigator();
 
-	useEffect(() => {
-		
-	})
-	
 	return (
-		// <SafeAreaView style={styles.safeAreaView}>
-		// 	<YouTube
-		// 		videoId="KVZ-P-ZI6W4" // The YouTube video ID
-		// 		play={false} // control playback of video with true/false
-		// 		fullscreen={false} // control whether the video should play in fullscreen or inline
-		// 		loop // control whether the video should loop when ended
-		// 		// onReady={setReady(true)}
-		// 		// onChangeState={e => setState(e.state)}
-		// 		// onChangeQuality={e => setQuality(e.quality)}
-		// 		// onError={e => setError(e.error)}
-		// 		style={{ alignSelf: 'stretch', height: 300 }}
-		// 	/>
-		// </SafeAreaView>
-		<MyPage
-			text={"My Text"} />
-
+		<NavigationContainer>
+			<Stack.Navigator 
+				initialRouteName="HomeScreen" 
+				screenOptions={{
+					headerTitleStyle: {
+						color: 'white',
+					},
+					headerTintColor: 'white',
+					headerStyle: {
+						backgroundColor: '#6666aa',
+					}
+				}} >
+				<Stack.Screen 
+					name={"HomeScreen"} 
+					component={HomeScreen}
+					options={{
+						title: ""
+					}} />	
+				<Stack.Screen 
+					name={"LoginScreen"} 
+					component={LoginScreen}
+					options={{
+						headerTitle: () => <Text style={appStyles.title}>Login</Text>
+					}} />
+				<Stack.Screen 
+					name={"RegisterScreen"} 
+					component={RegisterScreen}
+					options={{
+						headerTitle: () => <Text style={appStyles.title}>Register</Text>
+					}} />	
+			</Stack.Navigator>
+		</NavigationContainer>
 	)
 }
 
-styles = StyleSheet.create({
-	safeAreaView: {
-		backgroundColor: '#999'
+appStyles = StyleSheet.create({
+	title: {
+		color: 'white',
+        fontWeight: 'bold',
+        fontStyle: 'italic',
+        fontFamily: 'times',
+        fontSize: 30,
 	}
 })
 
