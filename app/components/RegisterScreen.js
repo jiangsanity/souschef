@@ -2,28 +2,46 @@ import React, {useState} from 'react';
 import {
 	StyleSheet,
     SafeAreaView,
-    Picker,
     Text,
-    TextInput,
     TouchableOpacity,
     SegmentedControlIOS,
-    View
+    View,
+    Alert
 } from 'react-native';
 import InputFieldAndLabel from './InputFieldAndLabel';
-
-// const userTypes = {
-//     sousChef: "SousChef",
-//     headChef: "HeadChef"
-// }
+import * as firebase from 'firebase';
 
 const userTypes = ["SousChef", "HeadChef"];
 
-const RegisterScreen = () => {
+const RegisterScreen = ({ navigation }) => {
     const [type, setType] = useState(userTypes[0]);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+
+    const onPressHandler = () => {
+        if (!email.includes('@')) {
+            Alert.alert('Error', 'Please enter a valid email.', {text: 'Ok'});
+        } else if(password.length < 6) {
+            Alert.alert('Error', 'Your password must exceed 5 characters.', {text: 'Ok'});
+        } else if (password != confirmPassword) {
+            Alert.alert('Error', 'Passwords do not match.', {text: 'Ok'});
+        } else {
+            // try signing up
+            firebase
+                .auth()
+                .createUserWithEmailAndPassword(email, password)
+                .then(userCreds => {
+                    navigation.navigate("SousChefMainScreen")
+                    return userCreds.user.updateProfile({
+                        displayName: name
+                    });
+                })
+                .catch(err =>  Alert.alert("User with that email already exists! Or there was another error."));
+            
+        }
+    }
 
 	return (
 		<SafeAreaView style={registerStyles.container}>
@@ -59,7 +77,8 @@ const RegisterScreen = () => {
                 setFieldValue={setConfirmPassword}
                 secure={true} />
             <TouchableOpacity 
-                style={registerStyles.button} >
+                style={registerStyles.button}
+                onPress={onPressHandler} >
                 <Text style={registerStyles.txt2}>Register</Text>
             </TouchableOpacity>
 		</SafeAreaView>

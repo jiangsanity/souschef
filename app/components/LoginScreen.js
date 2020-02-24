@@ -5,12 +5,24 @@ import {
     Text,
     TextInput,
     TouchableOpacity,
-    View
+    View,
+    Alert
 } from 'react-native';
+import * as firebase from 'firebase';
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const tryLogin = () => {
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(email, password)
+            .then(user => {
+                navigation.navigate("SousChefMainScreen");
+            })
+            .catch(err => Alert.alert(err));
+    }
 
 	return (
 		<SafeAreaView style={loginStyles.container}>
@@ -34,7 +46,9 @@ const LoginScreen = () => {
                 value={password}
                 secureTextEntry={true} />
 
-            <TouchableOpacity style={loginStyles.button}>
+            <TouchableOpacity 
+                style={loginStyles.button}
+                onPress={tryLogin} >
                 <Text style={loginStyles.txt2}>Login</Text>
             </TouchableOpacity>
 		</SafeAreaView>
