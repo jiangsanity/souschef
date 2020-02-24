@@ -10,20 +10,49 @@ import {
     View
 } from 'react-native';
 import InputFieldAndLabel from './InputFieldAndLabel';
-
-// const userTypes = {
-//     sousChef: "SousChef",
-//     headChef: "HeadChef"
-// }
+import { Alert } from 'react-native';
+import firebase from 'react-native-firebase'
 
 const userTypes = ["SousChef", "HeadChef"];
 
-const RegisterScreen = () => {
+const RegisterScreen = ({ navigation }) => {
     const [type, setType] = useState(userTypes[0]);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+
+    // const handleSignUp = () => {
+    //     const firebaseConfig = {
+    //         apiKey: "AIzaSyAnYhPlb9HskZ0BmpfbkVCMKhWbS0wfEsY",
+    //         authDomain: "souschef-50dec.firebaseapp.com",
+    //         databaseURL: "https://souschef-50dec.firebaseio.com",
+    //         projectId: "souschef-50dec",
+    //         storageBucket: "souschef-50dec.appspot.com",
+    //         messagingSenderId: "944322068444",
+    //         appId: "1:944322068444:web:9e66f3f067eb20815b9919",
+    //         measurementId: "G-NK5BEDJZXW"
+    //     };
+    //     firebase.initializeApp(firebaseConfig)
+    //     firebase
+    //       .auth()
+    //       .createUserWithEmailAndPassword(email, password)
+    //       .then(() => this.props.navigation.navigate('HomeScreen'))
+    //       .catch(error => this.setState({ errorMessage: error.message }))
+    //   }
+
+    const onPressHandler = () => {
+        if (!email.includes('@')) {
+            Alert.alert('Error', 'Please enter a valid email.', {text: 'Ok'});
+        } else if(password.length < 6) {
+            Alert.alert('Error', 'Your password must exceed 5 characters.', {text: 'Ok'});
+        } else if (password != confirmPassword) {
+            Alert.alert('Error', 'Passwords do not match.', {text: 'Ok'});
+        } else {
+            // handleSignUp()
+            navigation.navigate("HomeScreen")
+        }
+    }
 
 	return (
 		<SafeAreaView style={registerStyles.container}>
@@ -59,7 +88,8 @@ const RegisterScreen = () => {
                 setFieldValue={setConfirmPassword}
                 secure={true} />
             <TouchableOpacity 
-                style={registerStyles.button} >
+                style={registerStyles.button} 
+                onPress={() => onPressHandler()} >
                 <Text style={registerStyles.txt2}>Register</Text>
             </TouchableOpacity>
 		</SafeAreaView>
