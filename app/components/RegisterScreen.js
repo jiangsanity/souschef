@@ -38,7 +38,7 @@ const RegisterScreen = ({ navigation }) => {
                         displayName: name
                     });
                 })
-                .catch(err =>  Alert.alert("User with that email already exists! Or there was another error."));
+                .catch(err =>  Alert.alert(err.message));
             
         }
     }

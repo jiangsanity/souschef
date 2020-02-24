@@ -19,9 +19,9 @@ const LoginScreen = ({ navigation }) => {
             .auth()
             .signInWithEmailAndPassword(email, password)
             .then(user => {
-                navigation.navigate("SousChefMainScreen");
+                navigation.navigate("SousChefMainScreen", {user: user});
             })
-            .catch(err => Alert.alert(err));
+            .catch(err => Alert.alert(err.message));
     }
 
 	return (

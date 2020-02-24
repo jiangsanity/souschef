@@ -6,7 +6,10 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
-const SousChefMainScreen = ({ navigation }) => {
+const SousChefMainScreen = ({ route, navigation }) => {
+
+    const { user } = route.params;
+    console.log(user);
 	return (
 		<SafeAreaView style={sousChefMainStyles.container}>
 			<Text style={sousChefMainStyles.titleText}>
