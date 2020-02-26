@@ -4,10 +4,10 @@ import {
     SafeAreaView,
     Text,
     TouchableOpacity,
+    Image
 } from 'react-native';
 
 const HomeScreen = ({ navigation }) => {
-
 
     
 	return (
@@ -15,6 +15,7 @@ const HomeScreen = ({ navigation }) => {
 			<Text style={homeStyles.titleText}>
                 SousChef!
             </Text>
+            <Image source={require('../image.png')} style={homeStyles.img}/>
             <TouchableOpacity 
                 style={homeStyles.button}
                 onPress={() => navigation.navigate("LoginScreen")} >
@@ -42,9 +43,9 @@ homeStyles = StyleSheet.create({
         fontWeight: 'bold',
         fontStyle: 'italic',
         fontFamily: 'times',
-        fontSize: 45,
-        marginTop: 200,
-        marginBottom: 180,
+        fontSize: 60,
+        marginTop: 100,
+        marginBottom: 20,
         padding: 10,
         textAlign: 'center'
     },
@@ -56,9 +57,15 @@ homeStyles = StyleSheet.create({
         backgroundColor: '#ccc',
         width: 200,
         alignItems: 'center',
-        margin: 40,
+        margin: 20,
         padding: 10,
         borderRadius: 5
+    },
+    img: {
+        width: 200,
+        height: 200,
+        borderRadius: 40,
+        marginBottom: 40
     }
 });
 
