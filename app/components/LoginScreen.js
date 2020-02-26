@@ -18,8 +18,17 @@ const LoginScreen = ({ navigation }) => {
         firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
-            .then(user => {
-                navigation.navigate("SousChefMainScreen", {user: user});
+            .then(userCreds => {
+                const { user } = userCreds;
+                const sousChefsRef = firebase.database().ref("users/sousChef");
+                sousChefsRef.on('value', (snapshot) => {
+                    let sousChefs = snapshot.val();
+                    if (Object.keys(sousChefs).includes(user.uid)) {
+                        navigation.navigate("SousChefMainScreen", {user: user});
+                    } else {
+                        navigation.navigate("HeadChefMainScreen", {user: user});
+                    }
+                });
             })
             .catch(err => Alert.alert(err.message));
     }

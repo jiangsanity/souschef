@@ -6,8 +6,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './components/HomeScreen';
 import LoginScreen from './components/LoginScreen';
 import RegisterScreen from './components/RegisterScreen';
-import * as firebase  from 'firebase';
 import SousChefMainScreen from './components/SousChefMainScreen';
+import HeadChefMainScreen from './components/HeadChefMainScreen';
+import YoutubeViewer from './components/YoutubeViewer';
+import * as firebase  from 'firebase';
+
 
 const App = () => {
 	const Stack = createStackNavigator();
@@ -36,7 +39,7 @@ const App = () => {
 					headerTitleStyle: {
 						color: 'white',
 					},
-					headerTintColor: 'white',
+					headerTintColor: 'black',
 					headerStyle: {
 						backgroundColor: '#6666aa',
 					}
@@ -69,13 +72,36 @@ const App = () => {
 				<Stack.Screen 
 					name={"SousChefMainScreen"} 
 					component={SousChefMainScreen}
+					
 					options={{
+						title: "",
 						headerTitle: () => <Text style={appStyles.mainScreenTitle}>Welcome</Text>,
 						headerStyle: {
 							backgroundColor: '#eee',
 						},
 						headerLeft: null
-					}} />	
+					}} />
+				<Stack.Screen 
+					name={"HeadChefMainScreen"} 
+					component={HeadChefMainScreen}
+					
+					options={{
+						title: "",
+						headerTitle: () => <Text style={appStyles.mainScreenTitle}>Welcome</Text>,
+						headerStyle: {
+							backgroundColor: '#eee',
+						},
+						headerLeft: null
+					}} />
+				<Stack.Screen 
+					name={"YoutubeViewer"} 
+					component={YoutubeViewer}
+					options={{
+						headerTitle: () => <Text style={appStyles.titleBlack}>Video</Text>,
+						headerStyle: {
+							backgroundColor: '#eee',
+						}
+					}} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	)
@@ -84,6 +110,13 @@ const App = () => {
 appStyles = StyleSheet.create({
 	title: {
 		color: 'white',
+        fontWeight: 'bold',
+        fontStyle: 'italic',
+        fontFamily: 'times',
+        fontSize: 30,
+	},
+	titleBlack: {
+		color: 'black',
         fontWeight: 'bold',
         fontStyle: 'italic',
         fontFamily: 'times',

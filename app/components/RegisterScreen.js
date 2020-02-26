@@ -33,13 +33,31 @@ const RegisterScreen = ({ navigation }) => {
                 .auth()
                 .createUserWithEmailAndPassword(email, password)
                 .then(userCreds => {
-                    navigation.navigate("SousChefMainScreen")
-                    return userCreds.user.updateProfile({
-                        displayName: name
+                    const userId = userCreds.user.uid;
+                    const queryType = type === userTypes[0] ? "sousChef" : "headChef";
+                    const ref = firebase.database().ref(`/users/${queryType}`);
+                    const newUser = {
+                        info: {
+                            email: email,
+                            name: name,
+                            userId: userId
+                        },
+                        following: [],
+                        completedMeals: [],
+                        savedMeals: []
+                    };
+                    ref.child(userId).set(newUser, () => {
+                        navigation.navigate("SousChefMainScreen");
                     });
+                    // const ref = firebase.database().ref("users/sousChef/")
+                    // navigation.navigate("SousChefMainScreen")
+                    // return userCreds.user.updateProfile({
+                    //     displayName: name
+                    // });
                 })
                 .catch(err =>  Alert.alert(err.message));
-            
+
+                    
         }
     }
 
