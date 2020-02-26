@@ -7,7 +7,7 @@ import {
     SegmentedControlIOS,
     View,
     Alert,
-    ScrollView
+    ScrollView,
 } from 'react-native';
 import InputFieldAndLabel from './InputFieldAndLabel';
 import * as firebase from 'firebase';
@@ -68,8 +68,7 @@ const RegisterScreen = ({ navigation }) => {
 
 	return (
 		<SafeAreaView style={registerStyles.container}>
-            <ScrollView style={registerStyles.scrollview}
-                contentContainerStyle={registerStyles.scrollview}>
+            <ScrollView style={registerStyles.scrollview}>
                 <View style={registerStyles.spacer} />
                 <View style={{width: 300}}>
                     <Text style={registerStyles.txt}>I am a ...</Text>
@@ -117,7 +116,7 @@ registerStyles = StyleSheet.create({
     },
     segmented: {
         height: 40, 
-        width: 300, 
+        // width: 300, 
         marginBottom: 40, 
         borderColor: 'white', 
         borderWidth: 2
@@ -130,8 +129,9 @@ registerStyles = StyleSheet.create({
 		width: '100%',
         height: '100%',
         flexDirection: 'column',
+        flex: 1,
         alignItems: 'center',
-        padding: 100
+        padding: 50
     },
     titleText: {
         color: 'white',
@@ -155,7 +155,7 @@ registerStyles = StyleSheet.create({
     },
     button: {
         backgroundColor: '#ccc',
-        width: 235,
+        width: 150,
         alignItems: 'center',
         margin: 30,
         padding: 10,

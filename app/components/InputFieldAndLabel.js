@@ -33,11 +33,11 @@ inputStyles = StyleSheet.create({
         borderBottomColor: "white",
         borderBottomWidth: StyleSheet.hairlineWidth,
         height: 40,
-        width: 300,
+//         width: 300,
         fontSize: 15,
         color: "white",
         padding: 10,
-        marginBottom: 50,
+        marginBottom: 40,
         borderRadius: 5
     },
 
