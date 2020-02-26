@@ -7,28 +7,49 @@ import {
     View,
     NativeComponent
 } from 'react-native';
+import MealPreview from './MealPreview';
+import * as firebase from 'firebase';
 
 const SousChefMainScreen = ({ route, navigation }) => {
     const { user } = route.params;
-    const URL = "https://szi75jseif.execute-api.us-east-2.amazonaws.com/dev/videos/suggested?user=jjiang312&experience=1";
+    // const URL_INDIVIDUAL = "https://szi75jseif.execute-api.us-east-2.amazonaws.com/dev/videos/suggested?user=jjiang312&experience=1";
+    const URL_LIST = "https://szi75jseif.execute-api.us-east-2.amazonaws.com/live/videos/list/food";
 
-    const [videoID, setVideoID] = useState("");
-    const [recipeName, setRecipeName] = useState("");
+    const [videos, setVideos] = useState([]);
 
-    const showVideoDetail = () => {
-        console.log(videoID);
+    const showVideoDetail = (i) => {
+        console.log(i);
         navigation.navigate("YoutubeViewer", {
-            videoID: videoID,
-            recipeName: recipeName
+            videoID: videos[i].videoID,
+            recipeName: videos[i].recipeName,
+            ingredients: videos[i].ingredients,
+            length: videos[i].length,
+            headChef: videos[i].headChef
         });
     }
 
     useEffect(() => {
-        fetch(URL)
+        // fetch(URL_INDIVIDUAL)
+        //     .then(res => res.json())
+        //     .then(json => {
+        //         setVideoID(json.videoID);
+        //         setRecipeName(json.recipeName);
+        //     })
+        //     .catch(err => console.log(err.message));
+
+        fetch(URL_LIST)
             .then(res => res.json())
             .then(json => {
-                setVideoID(json.videoID);
-                setRecipeName(json.recipeName);
+                let videosInfo = json["videos"].map(v => {
+                    return {
+                        headChef: v.headChef,
+                        recipeName: v.recipeName,
+                        ingredients: v.ingredients,
+                        videoID: v.videoID,
+                        length: v.time
+                    }
+                });
+                setVideos(videosInfo);
             })
             .catch(err => console.log(err.message));
     });
@@ -39,12 +60,27 @@ const SousChefMainScreen = ({ route, navigation }) => {
                 SousChef Landing Screen
             </Text>
             <View style={sousChefMainStyles.videosContainer}>
-                <TouchableOpacity 
-                    style={sousChefMainStyles.videoWrapper}
-                    onPress={showVideoDetail} >
-                    <Text style={sousChefMainStyles.txt}>{recipeName}</Text>
-                    <Text style={sousChefMainStyles.txt}>></Text>
-                </TouchableOpacity>
+                {/* <MealPreview 
+                    recipeName={recipeName}
+                    headChef="George Maroun"
+                    showVideoDetail={showVideoDetail} />
+                <MealPreview 
+                    recipeName={recipeName}
+                    headChef="George Maroun"
+                    showVideoDetail={showVideoDetail} />
+                <MealPreview 
+                    recipeName={recipeName}
+                    headChef="George Maroun"
+                    showVideoDetail={showVideoDetail} /> */}
+                {videos.map((v, i) => {
+                    return (
+                        <MealPreview 
+                            recipeName={v.recipeName}
+                            headChef={v.headChef}
+                            showVideoDetail={() => showVideoDetail(i)}
+                            key={v.videoID} />
+                    )
+                })}
             </View>
 		</SafeAreaView>
 	)
@@ -52,7 +88,7 @@ const SousChefMainScreen = ({ route, navigation }) => {
 
 sousChefMainStyles = StyleSheet.create({
 	container: {
-		backgroundColor: '#eee',
+		backgroundColor: '#fff',
 		width: '100%',
         height: '100%',
         flexDirection: 'column',
@@ -77,18 +113,8 @@ sousChefMainStyles = StyleSheet.create({
         display: "flex",
         flexDirection: "column",
         alignContent: "flex-start",
-        backgroundColor: "#ddd"
+        // backgroundColor: "#eee"
     },
-    videoWrapper: {
-        backgroundColor: "#ccc",
-        padding: 10,
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        borderColor: "#bbb",
-        borderWidth: 1,
-        borderRadius: 5
-    }
 });
 
 export default SousChefMainScreen;
