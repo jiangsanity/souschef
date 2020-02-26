@@ -3,12 +3,10 @@ import {
 	StyleSheet,
     SafeAreaView,
     Text,
-    TouchableOpacity,
     View,
-    NativeComponent
+    TabBarIOS
 } from 'react-native';
 import MealPreview from './MealPreview';
-import * as firebase from 'firebase';
 
 const SousChefMainScreen = ({ route, navigation }) => {
     const { user } = route.params;
@@ -88,7 +86,7 @@ const SousChefMainScreen = ({ route, navigation }) => {
                 // ]
             });
         }
-        getData()
+        getData();
     }, []);
 
     console.log("render");
@@ -99,24 +97,13 @@ const SousChefMainScreen = ({ route, navigation }) => {
                 Food Recipes
             </Text>
             <View style={sousChefMainStyles.videosContainer}>
-                {/* <MealPreview 
-                    recipeName={recipeName}
-                    headChef="George Maroun"
-                    showVideoDetail={showVideoDetail} />
-                <MealPreview 
-                    recipeName={recipeName}
-                    headChef="George Maroun"
-                    showVideoDetail={showVideoDetail} />
-                <MealPreview 
-                    recipeName={recipeName}
-                    headChef="George Maroun"
-                    showVideoDetail={showVideoDetail} /> */}
                 {videos["food"].map((v, i) => {
                     return (
                         <MealPreview 
                             recipeName={v.recipeName}
                             headChef={v.headChef}
                             showVideoDetail={() => showVideoDetail(i)}
+                            videoID={v.videoID}
                             key={v.videoID} />
                     )
                 })}

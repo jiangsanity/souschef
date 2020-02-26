@@ -48,7 +48,11 @@ const RegisterScreen = ({ navigation }) => {
                         savedMeals: []
                     };
                     ref.child(userId).set(newUser, () => {
-                        navigation.navigate("SousChefMainScreen");
+                        if (type === userTypes[0]) {
+                            navigation.navigate("SousChefMainScreen");
+                        } else if (type === userTypes[1]) {
+                            navigation.navigate("HeadChefMainScreen");
+                        }
                     });
                     // const ref = firebase.database().ref("users/sousChef/")
                     // navigation.navigate("SousChefMainScreen")
@@ -104,7 +108,6 @@ const RegisterScreen = ({ navigation }) => {
 }
 
 registerStyles = StyleSheet.create({
-
     segmented: {
         height: 40, 
         width: 300, 
@@ -116,7 +119,7 @@ registerStyles = StyleSheet.create({
         height: 20
     },
 	container: {
-		backgroundColor: '#6666aa',
+		backgroundColor: '#4d7bb0',
 		width: '100%',
         height: '100%',
         flexDirection: 'column',

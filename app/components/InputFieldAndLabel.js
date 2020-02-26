@@ -28,6 +28,8 @@ inputStyles = StyleSheet.create({
         padding: 10,
         backgroundColor: 'white',
         marginBottom: 40,
+        borderRadius: 5,
+        color: "black"
     },
 
 });

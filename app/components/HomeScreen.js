@@ -13,7 +13,7 @@ const HomeScreen = ({ navigation }) => {
 	return (
 		<SafeAreaView style={homeStyles.container}>
 			<Text style={homeStyles.titleText}>
-                SousChef
+                SousChef!
             </Text>
             <TouchableOpacity 
                 style={homeStyles.button}
@@ -31,7 +31,7 @@ const HomeScreen = ({ navigation }) => {
 
 homeStyles = StyleSheet.create({
 	container: {
-		backgroundColor: '#6666aa',
+		backgroundColor: '#4d7bb0',
 		width: '100%',
         height: '100%',
         flexDirection: 'column',
