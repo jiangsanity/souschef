@@ -57,7 +57,6 @@ const RegisterScreen = ({ navigation }) => {
                     // });
                 })
                 .catch(err =>  Alert.alert(err.message));
-
                     
         }
     }
