@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import InputFieldAndLabel from './InputFieldAndLabel';
 import * as firebase from 'firebase';
-
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 const userTypes = ["SousChef", "HeadChef"];
 
@@ -68,7 +68,7 @@ const RegisterScreen = ({ navigation }) => {
 
 	return (
 		<SafeAreaView style={registerStyles.container}>
-            <ScrollView style={registerStyles.scrollview}
+            <KeyboardAwareScrollView style={registerStyles.scrollview}
                 contentContainerStyle={registerStyles.scrollview}>
                 <View style={registerStyles.spacer} />
                 <View style={{width: 300}}>
@@ -106,7 +106,7 @@ const RegisterScreen = ({ navigation }) => {
                     onPress={onPressHandler} >
                     <Text style={registerStyles.txt2}>Register</Text>
                 </TouchableOpacity>
-            </ScrollView>
+            </KeyboardAwareScrollView>
 		</SafeAreaView>
 	)
 }
@@ -117,7 +117,7 @@ registerStyles = StyleSheet.create({
     },
     segmented: {
         height: 40, 
-        width: 300, 
+        width: 250, 
         marginBottom: 40, 
         borderColor: 'white', 
         borderWidth: 2
@@ -155,7 +155,7 @@ registerStyles = StyleSheet.create({
     },
     button: {
         backgroundColor: '#ccc',
-        width: 235,
+        width: 185,
         alignItems: 'center',
         margin: 30,
         padding: 10,
