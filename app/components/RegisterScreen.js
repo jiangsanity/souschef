@@ -49,9 +49,9 @@ const RegisterScreen = ({ navigation }) => {
                     };
                     ref.child(userId).set(newUser, () => {
                         if (type === userTypes[0]) {
-                            navigation.navigate("SousChefMainScreen");
+                            navigation.navigate("SousChefMainScreen", {user: userCreds.user});
                         } else if (type === userTypes[1]) {
-                            navigation.navigate("HeadChefMainScreen");
+                            navigation.navigate("HeadChefMainScreen", {user: userCreds.user});
                         }
                     });
                     // const ref = firebase.database().ref("users/sousChef/")
