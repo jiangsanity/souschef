@@ -36,6 +36,8 @@ target 'TestApp' do
 
   pod 'Firebase/Analytics'
 
+  pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
+
   target 'TestAppTests' do
     inherit! :search_paths
     # Pods for testing

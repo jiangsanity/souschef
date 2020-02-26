@@ -11,6 +11,7 @@ import {
 import InputFieldAndLabel from './InputFieldAndLabel';
 import * as firebase from 'firebase';
 
+
 const userTypes = ["SousChef", "HeadChef"];
 
 const RegisterScreen = ({ navigation }) => {
@@ -56,8 +57,13 @@ const RegisterScreen = ({ navigation }) => {
                     // });
                 })
                 .catch(err =>  Alert.alert(err.message));
+<<<<<<< HEAD
 
                     
+=======
+            
+
+>>>>>>> 77b3f0efa038282b3a9ac1e0588868c34672ff36
         }
     }
 
