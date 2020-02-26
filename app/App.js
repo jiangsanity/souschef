@@ -10,6 +10,7 @@ import SousChefMainScreen from './components/SousChefMainScreen';
 import HeadChefMainScreen from './components/HeadChefMainScreen';
 import YoutubeViewer from './components/YoutubeViewer';
 import * as firebase  from 'firebase';
+import UploadRecipeScreen from './components/UploadRecipeScreen';
 
 
 const App = () => {
@@ -41,7 +42,7 @@ const App = () => {
 					},
 					headerTintColor: 'black',
 					headerStyle: {
-						backgroundColor: '#6666aa',
+						backgroundColor: '#4d7bb0',
 					}
 				}} >
 				<Stack.Screen 
@@ -54,7 +55,7 @@ const App = () => {
 							shadowOffset: {
 								height: 0
 							},
-							backgroundColor: '#6666aa'
+							backgroundColor: '#4d7bb0'
 						}
 					}} />	
 				<Stack.Screen 
@@ -97,7 +98,16 @@ const App = () => {
 					name={"YoutubeViewer"} 
 					component={YoutubeViewer}
 					options={{
-						headerTitle: () => <Text style={appStyles.titleBlack}>Video</Text>,
+						headerTitle: () => <Text style={appStyles.titleBlack}>Recipe</Text>,
+						headerStyle: {
+							backgroundColor: '#eee',
+						}
+					}} />
+				<Stack.Screen 
+					name={"UploadRecipeScreen"} 
+					component={UploadRecipeScreen}
+					options={{
+						headerTitle: () => <Text style={appStyles.titleBlack}>Create Recipe</Text>,
 						headerStyle: {
 							backgroundColor: '#eee',
 						}

@@ -4,6 +4,7 @@ import {
 	View,
 	Text,
 	SafeAreaView,
+	ScrollView
 } from 'react-native';
 import YouTube from 'react-native-youtube';
 
@@ -46,8 +47,16 @@ const YoutubeViewer = ({ route, navigation }) => {
 					<Text style={videoStyles.medium}>{headChef}</Text>
 					<Text style={videoStyles.medium}>{length} mins</Text>
 				</View>
-				<View>
-					{}
+				<View style={videoStyles.border}></View>
+				<View style={{padding: 3}}>
+					<Text style={videoStyles.medium}>Ingredients</Text>
+					<ScrollView style={videoStyles.ingredientsContainer}>
+						{ingredients.map(i => {
+							return (
+								<Text style={videoStyles.small} key={i}> - {i}</Text>
+							)
+						})}
+					</ScrollView>
 				</View>
 			</View>
 		</SafeAreaView>
@@ -55,16 +64,20 @@ const YoutubeViewer = ({ route, navigation }) => {
 	)
 }
 
-videoStyles = StyleSheet.create({
+const videoStyles = StyleSheet.create({
 	video: {
 		alignSelf: 'stretch',
 		height: 300
+	},
+	border: {
+		borderBottomColor: "#aaa",
+		borderBottomWidth: 1
 	},
 	row: {
 		display: "flex",
 		flexDirection: "row",
 		justifyContent: "space-between",
-		padding: 3
+		padding: 3,
 	},
 	information:  {
 		margin: 10
@@ -76,10 +89,20 @@ videoStyles = StyleSheet.create({
 	medium: {
 		fontSize: 20
 	},
+	small: {
+		fontSize: 16
+	},
+	ingredientsContainer: {
+		backgroundColor: "#ddd",
+		padding: 5,
+		margin: 5
+	},
 	container: {
 		display: "flex",
-		flexDirection: "column"
+		flexDirection: "column",
 		// backgroundColor: '#999'
+		margin: 5
+		
 	}
 })
 

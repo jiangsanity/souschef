@@ -5,14 +5,27 @@ import {
     TouchableOpacity,
     View
 } from 'react-native';
+import YouTube from 'react-native-youtube';
 
-const MealPreview = ({ recipeName, headChef, showVideoDetail, navigation }) => {
+const MealPreview = ({ recipeName, headChef, showVideoDetail, videoID, navigation }) => {
     return (
         <TouchableOpacity 
             style={mealPreviewStyles.videoWrapper}
             onPress={showVideoDetail} >
             <View style={mealPreviewStyles.leftWrapper}>
-                <View style={mealPreviewStyles.videoPreview} />
+                <View style={mealPreviewStyles.videoPreview}>
+                {/* <YouTube
+                    videoId={videoID} // The YouTube video ID
+                    play={false} // control playback of video with true/false
+                    fullscreen={false} // control whether the video should play in fullscreen or inline
+                    loop // control whether the video should loop when ended
+                    // onReady={setReady(true)}
+                    // onChangeState={e => setState(e.state)}
+                    // onChangeQuality={e => setQuality(e.quality)}
+                    // onError={e => setError(e.error)}
+                    style={mealPreviewStyles.videoPreview}
+                /> */}
+                </View>
                 <View style={mealPreviewStyles.leftText}>
                     <Text style={mealPreviewStyles.txt}>{recipeName}</Text>
                     <Text>{headChef}</Text>

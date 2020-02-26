@@ -69,7 +69,7 @@ loginStyles = StyleSheet.create({
         height: 150
     },
 	container: {
-		backgroundColor: '#6666aa',
+		backgroundColor: '#4d7bb0',
 		width: '100%',
         height: '100%',
         flexDirection: 'column',
@@ -109,7 +109,7 @@ loginStyles = StyleSheet.create({
         padding: 10,
         backgroundColor: 'white',
         marginBottom: 50,
-
+        borderRadius: 5
     }
 });
 
