@@ -4,7 +4,8 @@ import {
     SafeAreaView,
     Text,
     View,
-    TabBarIOS
+    TabBarIOS,
+    ScrollView
 } from 'react-native';
 import MealPreview from './MealPreview';
 
@@ -93,35 +94,37 @@ const SousChefMainScreen = ({ route, navigation }) => {
 
     return (
 		<SafeAreaView style={sousChefMainStyles.container}>
-			<Text style={sousChefMainStyles.sectionText}>
-                Food Recipes
-            </Text>
-            <View style={sousChefMainStyles.videosContainer}>
-                {videos["food"].map((v, i) => {
-                    return (
-                        <MealPreview 
-                            recipeName={v.recipeName}
-                            headChef={v.headChef}
-                            showVideoDetail={() => showVideoDetail(i)}
-                            videoID={v.videoID}
-                            key={v.videoID} />
-                    )
-                })}
-            </View>
-            <Text style={sousChefMainStyles.sectionText}>
-                Drink Recipes
-            </Text>
-            <View style={sousChefMainStyles.videosContainer}>
-                {videos["drink"].map((v, i) => {
-                    return (
-                        <MealPreview 
-                            recipeName={v.recipeName}
-                            headChef={v.headChef}
-                            showVideoDetail={() => showDrinkVideoDetail(i)}
-                            key={v.videoID} />
-                    )
-                })}
-            </View>
+            <ScrollView>
+                <Text style={sousChefMainStyles.sectionText}>
+                    Food Recipes
+                </Text>
+                <View style={sousChefMainStyles.videosContainer}>
+                    {videos["food"].map((v, i) => {
+                        return (
+                            <MealPreview 
+                                recipeName={v.recipeName}
+                                headChef={v.headChef}
+                                showVideoDetail={() => showVideoDetail(i)}
+                                videoID={v.videoID}
+                                key={v.videoID} />
+                        )
+                    })}
+                </View>
+                <Text style={sousChefMainStyles.sectionText}>
+                    Drink Recipes
+                </Text>
+                <View style={sousChefMainStyles.videosContainer}>
+                    {videos["drink"].map((v, i) => {
+                        return (
+                            <MealPreview 
+                                recipeName={v.recipeName}
+                                headChef={v.headChef}
+                                showVideoDetail={() => showDrinkVideoDetail(i)}
+                                key={v.videoID} />
+                        )
+                    })}
+                </View>
+            </ScrollView>
 		</SafeAreaView>
 	)
 }

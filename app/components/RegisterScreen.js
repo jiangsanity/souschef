@@ -6,7 +6,8 @@ import {
     TouchableOpacity,
     SegmentedControlIOS,
     View,
-    Alert
+    Alert,
+    ScrollView
 } from 'react-native';
 import InputFieldAndLabel from './InputFieldAndLabel';
 import * as firebase from 'firebase';
@@ -67,47 +68,53 @@ const RegisterScreen = ({ navigation }) => {
 
 	return (
 		<SafeAreaView style={registerStyles.container}>
-            <View style={registerStyles.spacer} />
-            <View style={{width: 300}}>
-                <Text style={registerStyles.txt}>I am a ...</Text>
-            </View>
-            <SegmentedControlIOS 
-                values={userTypes}
-                selectedIndex={userTypes.indexOf(type)}
-                style={registerStyles.segmented}
-                onChange={(event) => {
-                    setType(userTypes[event.nativeEvent.selectedSegmentIndex]);
-                }} />
-			<InputFieldAndLabel 
-                fieldName={"Name"}
-                fieldValue={name}
-                setFieldValue={setName}
-                secure={false} />
-            <InputFieldAndLabel 
-                fieldName={"Email"}
-                fieldValue={email}
-                setFieldValue={setEmail}
-                secure={false} />
-            <InputFieldAndLabel 
-                fieldName={"Password"}
-                fieldValue={password}
-                setFieldValue={setPassword}
-                secure={true} />
-            <InputFieldAndLabel 
-                fieldName={"Confirm Password"}
-                fieldValue={confirmPassword}
-                setFieldValue={setConfirmPassword}
-                secure={true} />
-            <TouchableOpacity 
-                style={registerStyles.button}
-                onPress={onPressHandler} >
-                <Text style={registerStyles.txt2}>Register</Text>
-            </TouchableOpacity>
+            <ScrollView style={registerStyles.scrollview}
+                contentContainerStyle={registerStyles.scrollview}>
+                <View style={registerStyles.spacer} />
+                <View style={{width: 300}}>
+                    <Text style={registerStyles.txt}>I am a ...</Text>
+                </View>
+                <SegmentedControlIOS 
+                    values={userTypes}
+                    selectedIndex={userTypes.indexOf(type)}
+                    style={registerStyles.segmented}
+                    onChange={(event) => {
+                        setType(userTypes[event.nativeEvent.selectedSegmentIndex]);
+                    }} />
+                <InputFieldAndLabel 
+                    fieldName={"Name"}
+                    fieldValue={name}
+                    setFieldValue={setName}
+                    secure={false} />
+                <InputFieldAndLabel 
+                    fieldName={"Email"}
+                    fieldValue={email}
+                    setFieldValue={setEmail}
+                    secure={false} />
+                <InputFieldAndLabel 
+                    fieldName={"Password"}
+                    fieldValue={password}
+                    setFieldValue={setPassword}
+                    secure={true} />
+                <InputFieldAndLabel 
+                    fieldName={"Confirm Password"}
+                    fieldValue={confirmPassword}
+                    setFieldValue={setConfirmPassword}
+                    secure={true} />
+                <TouchableOpacity 
+                    style={registerStyles.button}
+                    onPress={onPressHandler} >
+                    <Text style={registerStyles.txt2}>Register</Text>
+                </TouchableOpacity>
+            </ScrollView>
 		</SafeAreaView>
 	)
 }
 
 registerStyles = StyleSheet.create({
+    scrollview: {
+        marginHorizontal: 30,
+    },
     segmented: {
         height: 40, 
         width: 300, 
@@ -148,7 +155,7 @@ registerStyles = StyleSheet.create({
     },
     button: {
         backgroundColor: '#ccc',
-        width: 150,
+        width: 235,
         alignItems: 'center',
         margin: 30,
         padding: 10,
