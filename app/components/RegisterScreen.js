@@ -2,16 +2,15 @@ import React, {useState} from 'react';
 import {
 	StyleSheet,
     SafeAreaView,
-    Picker,
     Text,
-    TextInput,
     TouchableOpacity,
     SegmentedControlIOS,
-    View
+    View,
+    Alert
 } from 'react-native';
 import InputFieldAndLabel from './InputFieldAndLabel';
-import { Alert } from 'react-native';
-import firebase from 'react-native-firebase'
+import * as firebase from 'firebase';
+
 
 const userTypes = ["SousChef", "HeadChef"];
 
@@ -22,25 +21,6 @@ const RegisterScreen = ({ navigation }) => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
-    // const handleSignUp = () => {
-    //     const firebaseConfig = {
-    //         apiKey: "AIzaSyAnYhPlb9HskZ0BmpfbkVCMKhWbS0wfEsY",
-    //         authDomain: "souschef-50dec.firebaseapp.com",
-    //         databaseURL: "https://souschef-50dec.firebaseio.com",
-    //         projectId: "souschef-50dec",
-    //         storageBucket: "souschef-50dec.appspot.com",
-    //         messagingSenderId: "944322068444",
-    //         appId: "1:944322068444:web:9e66f3f067eb20815b9919",
-    //         measurementId: "G-NK5BEDJZXW"
-    //     };
-    //     firebase.initializeApp(firebaseConfig)
-    //     firebase
-    //       .auth()
-    //       .createUserWithEmailAndPassword(email, password)
-    //       .then(() => this.props.navigation.navigate('HomeScreen'))
-    //       .catch(error => this.setState({ errorMessage: error.message }))
-    //   }
-
     const onPressHandler = () => {
         if (!email.includes('@')) {
             Alert.alert('Error', 'Please enter a valid email.', {text: 'Ok'});
@@ -49,8 +29,41 @@ const RegisterScreen = ({ navigation }) => {
         } else if (password != confirmPassword) {
             Alert.alert('Error', 'Passwords do not match.', {text: 'Ok'});
         } else {
-            // handleSignUp()
-            navigation.navigate("HomeScreen")
+            // try signing up
+            firebase
+                .auth()
+                .createUserWithEmailAndPassword(email, password)
+                .then(userCreds => {
+                    const userId = userCreds.user.uid;
+                    const queryType = type === userTypes[0] ? "sousChef" : "headChef";
+                    const ref = firebase.database().ref(`/users/${queryType}`);
+                    const newUser = {
+                        info: {
+                            email: email,
+                            name: name,
+                            userId: userId
+                        },
+                        following: [],
+                        completedMeals: [],
+                        savedMeals: []
+                    };
+                    ref.child(userId).set(newUser, () => {
+                        navigation.navigate("SousChefMainScreen");
+                    });
+                    // const ref = firebase.database().ref("users/sousChef/")
+                    // navigation.navigate("SousChefMainScreen")
+                    // return userCreds.user.updateProfile({
+                    //     displayName: name
+                    // });
+                })
+                .catch(err =>  Alert.alert(err.message));
+<<<<<<< HEAD
+
+                    
+=======
+            
+
+>>>>>>> 77b3f0efa038282b3a9ac1e0588868c34672ff36
         }
     }
 
@@ -88,8 +101,8 @@ const RegisterScreen = ({ navigation }) => {
                 setFieldValue={setConfirmPassword}
                 secure={true} />
             <TouchableOpacity 
-                style={registerStyles.button} 
-                onPress={() => onPressHandler()} >
+                style={registerStyles.button}
+                onPress={onPressHandler} >
                 <Text style={registerStyles.txt2}>Register</Text>
             </TouchableOpacity>
 		</SafeAreaView>
