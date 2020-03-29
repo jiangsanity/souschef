@@ -8,9 +8,16 @@ import {
     ScrollView
 } from 'react-native';
 import MealPreview from './MealPreview';
+import YoutubeViewer from './YoutubeViewer';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from '@react-navigation/stack';
+import { StackActions } from '@react-navigation/native';
+
+
+const Tab = createBottomTabNavigator();
 
 const SousChefMainScreen = ({ route, navigation }) => {
-    const { user } = route.params;
+    // const { user } = route.params;
     // const URL_INDIVIDUAL = "https://szi75jseif.execute-api.us-east-2.amazonaws.com/dev/videos/suggested?user=jjiang312&experience=1";
     const BASE_URL = "https://szi75jseif.execute-api.us-east-2.amazonaws.com/live/videos/list/";
 
@@ -90,8 +97,6 @@ const SousChefMainScreen = ({ route, navigation }) => {
         getData();
     }, []);
 
-    console.log("render");
-
     return (
 		<SafeAreaView style={sousChefMainStyles.container}>
             <ScrollView>
@@ -127,6 +132,70 @@ const SousChefMainScreen = ({ route, navigation }) => {
             </ScrollView>
 		</SafeAreaView>
 	)
+}
+
+const Stack = createStackNavigator();
+
+const SousChefTabNavigator = () => {
+    return (
+        <Tab.Navigator>
+            <Tab.Screen name="Explore" component={SousChefMainScreen} />
+            {/* <Tab.Screen name="Explore" component={AnotherPlaceholder} /> */}
+            <Tab.Screen name="DM" component={DMPlaceholder} />
+            <Tab.Screen name="Live" component={LivePlaceholder} />
+            <Tab.Screen name="Favorites" component={LibraryPlaceholder} />
+            <Tab.Screen name="Profile" component={ProfilePlaceholder} />
+        </Tab.Navigator>
+    )
+}
+
+const AnotherPlaceholder = () => {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Explore" component={SousChefMainScreen} />
+            <Stack.Screen 
+                name={"YoutubeViewer"} 
+                component={YoutubeViewer}
+                options={{
+                    headerTitle: () => <Text style={appStyles.titleBlack}>Recipe</Text>,
+                    headerStyle: {
+                        backgroundColor: '#eee',
+                    }
+                }} />
+        </Stack.Navigator>
+    )
+}
+
+const DMPlaceholder = () => {
+    return (
+        <View>
+            <Text>DMs</Text>
+        </View>
+    )
+}
+
+const LivePlaceholder = () => {
+    return (
+        <View>
+            <Text>Live</Text>
+        </View>
+    )
+}
+
+const LibraryPlaceholder = () => {
+    return (
+        <View>
+            <Text>Library</Text>
+        </View>
+    )
+}
+
+const ProfilePlaceholder = () => {
+    return (
+        <View>
+            <Text>Profile</Text>
+        </View>
+    )
 }
 
 const sousChefMainStyles = StyleSheet.create({
@@ -166,4 +235,4 @@ const sousChefMainStyles = StyleSheet.create({
     },
 });
 
-export default SousChefMainScreen;
+export default SousChefTabNavigator;

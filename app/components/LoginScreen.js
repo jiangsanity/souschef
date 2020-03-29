@@ -35,9 +35,7 @@ const LoginScreen = ({ navigation }) => {
 
 	return (
 		<SafeAreaView style={loginStyles.container}>
-			{/* <Text style={loginStyles.titleText}>
-                Login
-            </Text> */}
+			
             <View style={loginStyles.spacer}></View>
             <Text style={loginStyles.txt}>Email</Text>
             <TextInput 

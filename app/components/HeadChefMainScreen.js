@@ -60,7 +60,7 @@ const HeadChefMainScreen = ({ route, navigation }) => {
     return (
 		<SafeAreaView style={headChefMainStyles.container}>
 			<Text style={headChefMainStyles.sectionText}>
-                Published Food Recipes
+                Food Recipes
             </Text>
             <View style={headChefMainStyles.videosContainer}>
                 {videos["food"].map((v, i) => {
@@ -74,19 +74,52 @@ const HeadChefMainScreen = ({ route, navigation }) => {
                     )
                 })}
             </View>
-            <View style={{display: "flex", flexDirection: "row", justifyContent: "space-around", margin: 10}}>
-                <TouchableOpacity style={headChefMainStyles.button} >
-                    <Text style={headChefMainStyles.medium}>Upload Recipe</Text>
-                </TouchableOpacity>
-            </View>
-            
         </SafeAreaView>
-        // <NavigationContainer independent={true}>
-        //     <Tab.Navigator>
-        //         <Tab.Screen name="Home" component={YoutubeViewer} />
-        //     </Tab.Navigator>
-        // </NavigationContainer>
 	)
+}
+
+const HeadChefTabNavigator = () => {
+    return (
+        <Tab.Navigator>
+            <Tab.Screen name="Explore" component={HeadChefMainScreen} />
+            <Tab.Screen name="DM" component={DMPlaceholder} />
+            <Tab.Screen name="Upload" component={UploadPlaceholder} />
+            <Tab.Screen name="Library" component={LibraryPlaceholder} />
+            <Tab.Screen name="Profile" component={ProfilePlaceholder} />
+        </Tab.Navigator>
+    )
+}
+
+const DMPlaceholder = () => {
+    return (
+        <View>
+            <Text>DMs</Text>
+        </View>
+    )
+}
+
+const UploadPlaceholder = () => {
+    return (
+        <View>
+            <Text>Upload</Text>
+        </View>
+    )
+}
+
+const LibraryPlaceholder = () => {
+    return (
+        <View>
+            <Text>Library</Text>
+        </View>
+    )
+}
+
+const ProfilePlaceholder = () => {
+    return (
+        <View>
+            <Text>Profile</Text>
+        </View>
+    )
 }
 
 const headChefMainStyles = StyleSheet.create({
@@ -137,4 +170,4 @@ const headChefMainStyles = StyleSheet.create({
     },
 });
 
-export default HeadChefMainScreen;
+export default HeadChefTabNavigator;
