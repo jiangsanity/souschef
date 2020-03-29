@@ -70,7 +70,7 @@ const RegisterScreen = ({ navigation }) => {
 		<SafeAreaView style={registerStyles.container}>
             <ScrollView style={registerStyles.scrollview}>
                 <View style={registerStyles.spacer} />
-                <View style={{width: 300}}>
+                <View >
                     <Text style={registerStyles.txt}>I am a ...</Text>
                 </View>
                 <SegmentedControlIOS 
@@ -113,10 +113,10 @@ const RegisterScreen = ({ navigation }) => {
 registerStyles = StyleSheet.create({
     scrollview: {
         marginHorizontal: 30,
+        width: "75%"
     },
     segmented: {
         height: 40, 
-        // width: 300, 
         marginBottom: 40, 
         borderColor: 'white', 
         borderWidth: 2
@@ -155,23 +155,11 @@ registerStyles = StyleSheet.create({
     },
     button: {
         backgroundColor: '#ccc',
-        width: 150,
         alignItems: 'center',
-        margin: 30,
+        margin: 20,
         padding: 10,
         borderRadius: 5
     },
-    input: {
-        borderBottomColor: "white",
-        borderBottomWidth: StyleSheet.hairlineWidth,
-        height: 40,
-        width: 300,
-        fontSize: 15,
-        color: "white",
-        padding: 10,
-        marginBottom: 50,
-        borderRadius: 5
-    }
 });
 
 export default RegisterScreen;
