@@ -21,11 +21,13 @@ const LoginScreen = ({ navigation }) => {
             .then(userCreds => {
                 const { user } = userCreds;
                 const sousChefsRef = firebase.database().ref("users/sousChef");
-                sousChefsRef.on('value', (snapshot) => {
+                sousChefsRef.once('value').then(snapshot => {
                     let sousChefs = snapshot.val();
                     if (Object.keys(sousChefs).includes(user.uid)) {
+                        user["userType"] = "sousChef";
                         navigation.navigate("SousChefMainScreen", {user: user});
                     } else {
+                        user["userType"] = "headChef";
                         navigation.navigate("HeadChefMainScreen", {user: user});
                     }
                 });

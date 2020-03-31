@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import MealPreview from './MealPreview';
 import YoutubeViewer from './YoutubeViewer';
+import Favorites from './Favorites';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from '@react-navigation/stack';
 import { StackActions } from '@react-navigation/native';
@@ -17,7 +18,8 @@ import { StackActions } from '@react-navigation/native';
 const Tab = createBottomTabNavigator();
 
 const SousChefMainScreen = ({ route, navigation }) => {
-    // const { user } = route.params;
+    const { user } = route.params;
+
     // const URL_INDIVIDUAL = "https://szi75jseif.execute-api.us-east-2.amazonaws.com/dev/videos/suggested?user=jjiang312&experience=1";
     const BASE_URL = "https://szi75jseif.execute-api.us-east-2.amazonaws.com/live/videos/list/";
 
@@ -35,7 +37,8 @@ const SousChefMainScreen = ({ route, navigation }) => {
             recipeName: videos.food[i].recipeName,
             ingredients: videos.food[i].ingredients,
             length: videos.food[i].length,
-            headChef: videos.food[i].headChef
+            headChef: videos.food[i].headChef,
+            user: user
         });
     }
 
@@ -45,7 +48,8 @@ const SousChefMainScreen = ({ route, navigation }) => {
             recipeName: videos.drink[i].recipeName,
             ingredients: videos.drink[i].ingredients,
             length: videos.drink[i].length,
-            headChef: videos.drink[i].headChef
+            headChef: videos.drink[i].headChef,
+            user: user
         });
     }
 
@@ -136,14 +140,20 @@ const SousChefMainScreen = ({ route, navigation }) => {
 
 const Stack = createStackNavigator();
 
-const SousChefTabNavigator = () => {
+const SousChefTabNavigator = ({route, navigation}) => {
     return (
         <Tab.Navigator>
-            <Tab.Screen name="Explore" component={SousChefMainScreen} />
+            <Tab.Screen 
+                name="Explore" 
+                component={SousChefMainScreen} 
+                initialParams={{user: route.params.user}} />
             {/* <Tab.Screen name="Explore" component={AnotherPlaceholder} /> */}
             <Tab.Screen name="DM" component={DMPlaceholder} />
             <Tab.Screen name="Live" component={LivePlaceholder} />
-            <Tab.Screen name="Favorites" component={LibraryPlaceholder} />
+            <Tab.Screen
+                name="Favorites" 
+                component={Favorites}
+                initialParams={{user: route.params.user}} />
             <Tab.Screen name="Profile" component={ProfilePlaceholder} />
         </Tab.Navigator>
     )
@@ -182,10 +192,10 @@ const LivePlaceholder = () => {
     )
 }
 
-const LibraryPlaceholder = () => {
+const FavoritesPlaceholder = () => {
     return (
         <View>
-            <Text>Library</Text>
+            <Text>Favorites</Text>
         </View>
     )
 }

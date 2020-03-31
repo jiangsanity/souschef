@@ -7,21 +7,49 @@ import {
 	ScrollView
 } from 'react-native';
 import YouTube from 'react-native-youtube';
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import * as firebase from 'firebase';
 
 const YoutubeViewer = ({ route, navigation }) => {
-	// const [ready, setReady] = useState(true);
-	// const [state, setState] = useState(null);
-	// const [quality, setQuality] = useState(null);
-	// const [error, setError] = useState(null);
 
-	// useEffect(() => {
+	const { videoID, recipeName, ingredients, length, headChef, user } = route.params;
+
+	const [favorite, setFavorite] = useState(false);
+
+	useEffect(() => {
+		let userRef = firebase.database().ref(`users/${user.userType}/${user.uid}`);
+
+		userRef.once('value').then(snapshot => {
+			let userVal = snapshot.val();
+			if (userVal["favorites"] && userVal["favorites"].includes(videoID)) {
+				setFavorite(true);
+			}
+		});
+	}, []);
+
+	const toggleFavorite = () => {
+		setFavorite(oldFavorite => {
+			return !oldFavorite;
+		});
+
+		let userRef = firebase.database().ref(`users/${user.userType}/${user.uid}`);
 		
-	// })
+		userRef.once('value').then(snapshot => {
+			let userVal = snapshot.val();
+			
+			if (!userVal["favorites"]) {
+				// doesn't have any favorites --> add it
+				userRef.child("favorites").set([videoID]);
+			} else if (userVal["favorites"] && !userVal["favorites"].includes(videoID)) {
+				// has favorites but not this video --> add it
+				userRef.child("favorites").set([...userVal["favorites"], videoID]);
+			} else if (userVal["favorites"] && userVal["favorites"].includes(videoID)) {
+				// has favorites that include this video --> remove it
+				userRef.child("favorites").set(userVal["favorites"].filter(id => id !== videoID));
+			}
+		});
+	}
 
-	// const videoID = KVZ-P-ZI6W4
-
-	const { videoID, recipeName, ingredients, length, headChef } = route.params;
-	
 	return (
 		<SafeAreaView style={videoStyles.container}>
 			<View>
@@ -39,6 +67,13 @@ const YoutubeViewer = ({ route, navigation }) => {
 			</View>
 			
 			<View style={videoStyles.information}>
+				<View style={videoStyles.row}>
+					<Icon
+						name={"star" + (favorite ? "" : "-o")} 
+						size={30} 
+						color="black"
+						onPress={toggleFavorite} />
+				</View>
 				<View style={videoStyles.row}>
 					<Text style={videoStyles.large}>{recipeName}</Text>
 					<Text style={videoStyles.large}>5/5 stars</Text>
