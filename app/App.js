@@ -116,7 +116,7 @@ const App = () => {
 					}} />
 				<Stack.Screen 
 					name={"SousChefAccountSettings"} 
-					component={AccountSettings}
+					component={SousChefAccountSettings}
 					options={{
 						headerTitle: () => <Text style={appStyles.titleBlack}>Account Settings</Text>,
 						headerStyle: {
@@ -125,7 +125,7 @@ const App = () => {
 					}} />
 				<Stack.Screen 
 					name={"SousChefPreferences"} 
-					component={Preferences}
+					component={SousChefPreferences}
 					options={{
 						headerTitle: () => <Text style={appStyles.titleBlack}>Preferences</Text>,
 						headerStyle: {

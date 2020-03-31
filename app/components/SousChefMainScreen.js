@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import MealPreview from './MealPreview';
 import YoutubeViewer from './YoutubeViewer';
-import ProfileViewer from './ProfileViewer';
 import SousChefMyProfile from './SousChefMyProfile';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from '@react-navigation/stack';

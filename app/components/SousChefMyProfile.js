@@ -4,12 +4,12 @@ import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 
 const SousChefMyProfile = ({ route, navigation }) => {
     const showSettings = (i) => {
-        navigation.navigate("AccountSettings", {
+        navigation.navigate("SousChefAccountSettings", {
         });
     }
 
     const showPreferences = (i) => {
-        navigation.navigate("Preferences", {
+        navigation.navigate("SousChefPreferences", {
         });
     }
 
