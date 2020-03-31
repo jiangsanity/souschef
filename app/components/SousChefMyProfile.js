@@ -1,11 +1,15 @@
 import React from "react";
 import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView, TouchableOpacity } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import AccountSettings from './AccountSettings';
 
-const MyProfile = ({ route, navigation }) => {
+const SousChefMyProfile = ({ route, navigation }) => {
     const showSettings = (i) => {
         navigation.navigate("AccountSettings", {
+        });
+    }
+
+    const showPreferences = (i) => {
+        navigation.navigate("Preferences", {
         });
     }
 
@@ -60,7 +64,8 @@ const MyProfile = ({ route, navigation }) => {
 
                 <View >
                     <TouchableOpacity
-                        style={profileViewerStyles.optionWrapper} >
+                        style={profileViewerStyles.optionWrapper} 
+                        onPress={showPreferences} >
                         <View style={profileViewerStyles.leftWrapper} >
                             <View style={profileViewerStyles.leftText}>
                                 <Text style={profileViewerStyles.text, {fontSize: 20}}>Preferences</Text>
@@ -158,4 +163,4 @@ const profileViewerStyles = StyleSheet.create({
     }
 })
 
-export default MyProfile;
+export default SousChefMyProfile;

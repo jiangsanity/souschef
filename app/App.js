@@ -11,7 +11,8 @@ import HeadChefMainScreen from './components/HeadChefMainScreen';
 import YoutubeViewer from './components/YoutubeViewer';
 import * as firebase  from 'firebase';
 import UploadRecipeScreen from './components/UploadRecipeScreen';
-import AccountSettings from './components/AccountSettings';
+import SousChefAccountSettings from './components/SousChefAccountSettings';
+import SousChefPreferences from './components/SousChefPreferences';
 
 
 const App = () => {
@@ -114,10 +115,19 @@ const App = () => {
 						}
 					}} />
 				<Stack.Screen 
-					name={"AccountSettings"} 
+					name={"SousChefAccountSettings"} 
 					component={AccountSettings}
 					options={{
 						headerTitle: () => <Text style={appStyles.titleBlack}>Account Settings</Text>,
+						headerStyle: {
+							backgroundColor: '#eee',
+						}
+					}} />
+				<Stack.Screen 
+					name={"SousChefPreferences"} 
+					component={Preferences}
+					options={{
+						headerTitle: () => <Text style={appStyles.titleBlack}>Preferences</Text>,
 						headerStyle: {
 							backgroundColor: '#eee',
 						}
