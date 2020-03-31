@@ -10,6 +10,7 @@ import {
 import MealPreview from './MealPreview';
 import YoutubeViewer from './YoutubeViewer';
 import Favorites from './Favorites';
+import SousChefMyProfile from './SousChefMyProfile';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from '@react-navigation/stack';
 import { StackActions } from '@react-navigation/native';
@@ -154,7 +155,7 @@ const SousChefTabNavigator = ({route, navigation}) => {
                 name="Favorites" 
                 component={Favorites}
                 initialParams={{user: route.params.user}} />
-            <Tab.Screen name="Profile" component={ProfilePlaceholder} />
+            <Tab.Screen name="Profile" component={SousChefMyProfile} />
         </Tab.Navigator>
     )
 }
