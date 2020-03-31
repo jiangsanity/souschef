@@ -1,8 +1,14 @@
 import React from "react";
 import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView, TouchableOpacity } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import AccountSettings from './AccountSettings';
 
-const ProfileViewer = ({ route, navigation }) => {
+const MyProfile = ({ route, navigation }) => {
+    const showSettings = (i) => {
+        navigation.navigate("AccountSettings", {
+        });
+    }
+
     return (
         <SafeAreaView style={profileViewerStyles.container}>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -39,9 +45,11 @@ const ProfileViewer = ({ route, navigation }) => {
                         <Text style={[profileViewerStyles.text, profileViewerStyles.subText]}>As SousChef</Text>
                     </View>
                 </View>
-
-                <View style={profileViewerStyles.settingsContainer}>
-                    <TouchableOpacity>
+                <View style={profileViewerStyles.statsContainer} />
+                <View >
+                    <TouchableOpacity
+                        style={profileViewerStyles.optionWrapper}
+                        onPress={showSettings} >
                         <View style={profileViewerStyles.leftWrapper} >
                             <View style={profileViewerStyles.leftText}>
                                 <Text style={profileViewerStyles.text, {fontSize: 20}}>Account Settings</Text>
@@ -50,8 +58,9 @@ const ProfileViewer = ({ route, navigation }) => {
                     </TouchableOpacity>
                 </View>
 
-                <View style={profileViewerStyles.settingsContainer}>
-                    <TouchableOpacity>
+                <View >
+                    <TouchableOpacity
+                        style={profileViewerStyles.optionWrapper} >
                         <View style={profileViewerStyles.leftWrapper} >
                             <View style={profileViewerStyles.leftText}>
                                 <Text style={profileViewerStyles.text, {fontSize: 20}}>Preferences</Text>
@@ -119,7 +128,7 @@ const profileViewerStyles = StyleSheet.create({
     },
     settingsContainer: {
         flexDirection: "row",
-        alignSelf: "center",
+        alignSelf: "flex-start",
         marginTop: 20,
     },
     statsBox: {
@@ -133,6 +142,20 @@ const profileViewerStyles = StyleSheet.create({
     leftText: {
         padding: 5
     },
+    optionWrapper: {
+        backgroundColor: "#fff",
+        padding: 10,
+        paddingTop: 15,
+        paddingBottom: 15,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        borderTopColor: "#ccc",
+        borderTopWidth: 1,
+        borderBottomColor: "#ccc",
+        borderBottomWidth: 1,
+    }
 })
 
-export default ProfileViewer;
+export default MyProfile;
