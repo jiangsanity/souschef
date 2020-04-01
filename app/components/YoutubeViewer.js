@@ -50,6 +50,10 @@ const YoutubeViewer = ({ route, navigation }) => {
 		});
 	}
 
+	const displayProfileViewer = () => {
+		navigation.navigate("ProfileViewer");
+	}
+
 	return (
 		<SafeAreaView style={videoStyles.container}>
 			<View>
@@ -79,7 +83,7 @@ const YoutubeViewer = ({ route, navigation }) => {
 					<Text style={videoStyles.large}>5/5 stars</Text>
 				</View>
 				<View style={videoStyles.row}>
-					<Text style={videoStyles.medium}>{headChef}</Text>
+					<Text onPress={displayProfileViewer} style={[videoStyles.medium, videoStyles.underlined]}>{headChef}</Text>
 					<Text style={videoStyles.medium}>{length} mins</Text>
 				</View>
 				<View style={videoStyles.border}></View>
@@ -116,6 +120,9 @@ const videoStyles = StyleSheet.create({
 	},
 	information:  {
 		margin: 10
+	},
+	underlined: {
+		textDecorationLine: "underline",
 	},
 	large: {
 		fontSize: 24,
