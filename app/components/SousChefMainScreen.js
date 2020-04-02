@@ -10,6 +10,8 @@ import {
 import MealPreview from './MealPreview';
 import YoutubeViewer from './YoutubeViewer';
 import ProfileViewer from './ProfileViewer';
+import Chat from './Chat';
+//import Main from './Main';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from '@react-navigation/stack';
 import { StackActions } from '@react-navigation/native';
@@ -137,12 +139,13 @@ const SousChefMainScreen = ({ route, navigation }) => {
 
 const Stack = createStackNavigator();
 
+
+
 const SousChefTabNavigator = () => {
     return (
         <Tab.Navigator>
             <Tab.Screen name="Explore" component={SousChefMainScreen} />
-            {/* <Tab.Screen name="Explore" component={AnotherPlaceholder} /> */}
-            <Tab.Screen name="DM" component={DMPlaceholder} />
+            <Tab.Screen name="Chat" component={Chat} />
             <Tab.Screen name="Live" component={LivePlaceholder} />
             <Tab.Screen name="Favorites" component={LibraryPlaceholder} />
             <Tab.Screen name="Profile" component={ProfileViewer} />
