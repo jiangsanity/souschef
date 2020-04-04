@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView } from "react-native";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import MealPreview from './MealPreview';
+import { Ionicons } from "@expo/vector-icons";
 
 const ProfileViewer = ({ route, navigation }) => {
     return (
@@ -13,37 +14,78 @@ const ProfileViewer = ({ route, navigation }) => {
 
                 <View style={{ alignSelf: "center" }}>
                     <View style={profileViewerStyles.profileImage}>
-                        <Image source={require("../assets/profile-pic.jpg")} style={profileViewerStyles.image} resizeMode="center"></Image>
+                        {/* <View style={profileViewerStyles.circleFrame}> */}
+                        <Image source={require("../assets/profile-pic.jpeg")} style={profileViewerStyles.image} resizeMode="center"></Image>
+                        {/* </View> */}
                     </View>
-                    <View style={profileViewerStyles.add}>
-                        <Ionicons name="ios-add" size={48} color="#DFD8C8" style={{ marginTop: 6, marginLeft: 2 }}></Ionicons>
-                    </View>
+                    {/* <View style={profileViewerStyles.add}>
+                        <Ionicons name="add-circle-outline"></Ionicons>
+                    </View> */}
+                    <Image source={require("../assets/add-icon.png")} style={profileViewerStyles.add} resizeMode="center"></Image>
+
                 </View>
 
                 <View style={profileViewerStyles.infoContainer}>
-                    <Text style={[profileViewerStyles.text, { fontWeight: "200", fontSize: 36 }]}>George</Text>
-                    <Text style={[profileViewerStyles.text, { color: "#AEB5BC", fontSize: 14 }]}>Chef at Linguine's</Text>
+                    <Text style={[profileViewerStyles.text, { fontWeight: "200", fontSize: 36 }]}>The Cooking Foodie</Text>
+                    <Text style={[profileViewerStyles.text, { color: "#AEB5BC", fontSize: 14 }]}>Food-Tuber</Text>
                 </View>
                 
                 <View style={profileViewerStyles.statsContainer}>
                     <View style={profileViewerStyles.statsBox}>
-                        <Text style={[profileViewerStyles.text, { fontSize: 24 }]}>483</Text>
+                        <Text style={[profileViewerStyles.text, { fontSize: 24 }]}>386</Text>
                         <Text style={[profileViewerStyles.text, profileViewerStyles.subText]}>Videos</Text>
                     </View>
                     <View style={[profileViewerStyles.statsBox, { borderColor: "#DFD8C8", borderLeftWidth: 1, borderRightWidth: 1 }]}>
-                        <Text style={[profileViewerStyles.text, { fontSize: 24 }]}>45,844</Text>
+                        <Text style={[profileViewerStyles.text, { fontSize: 24 }]}>786K</Text>
                         <Text style={[profileViewerStyles.text, profileViewerStyles.subText]}>Followers</Text>
                     </View>
                     <View style={profileViewerStyles.statsBox}>
-                        <Text style={[profileViewerStyles.text, { fontSize: 24 }]}>4 Years</Text>
+                        <Text style={[profileViewerStyles.text, { fontSize: 24 }]}>3 Years</Text>
                         <Text style={[profileViewerStyles.text, profileViewerStyles.subText]}>Experience</Text>
                     </View>
                 </View>
+                <Text style={profileViewerStyles.sectionTextBlank}>
+                </Text>
+                <Text style={profileViewerStyles.sectionText}>
+                    Food Recipes
+                </Text>
+                <View style={profileViewerStyles.videosContainer}>
+                    <MealPreview 
+                        recipeName={"Mac n Cheese"}
+                        headChef={"Cooking Foodie"}
+                    />
+                    <MealPreview 
+                        recipeName={"Baked Carrot Fries"}
+                        headChef={"Cooking Foodie"}
+                    />
+                    <MealPreview 
+                        recipeName={"Nigerian Meat Pie"}
+                        headChef={"Cooking Foodie"}
+                    />
+                    <MealPreview 
+                        recipeName={"Vanilla Cupcakes"}
+                        headChef={"Cooking Foodie"}
+                    />
+                    <MealPreview 
+                        recipeName={"Cornbread"}
+                        headChef={"Cooking Foodie"}
+                    />
+                </View>
+                
             </ScrollView>
         </SafeAreaView>
     );
 }
-
+// const showVideoDetail = () => {
+//     navigation.navigate("YoutubeViewer", {
+//         videoID: videos.food[i].videoID,
+//         recipeName: videos.food[i].recipeName,
+//         ingredients: videos.food[i].ingredients,
+//         length: videos.food[i].length,
+//         headChef: videos.food[i].headChef,
+//         user: user
+//     });
+// }
 const profileViewerStyles = StyleSheet.create({
     container: {
         flex: 1,
@@ -74,10 +116,13 @@ const profileViewerStyles = StyleSheet.create({
         width: 180,
         height: 180,
         borderRadius: 120,
-        overflow: "hidden"
+        overflow: "hidden",
+        resizeMode: 'contain',
+        borderWidth: 3,
+        borderColor: "black"
     },
     add: {
-        backgroundColor: "#4d7bb0",
+        backgroundColor: "#41444B",
         position: "absolute",
         bottom: 0,
         right: 0,
@@ -85,7 +130,9 @@ const profileViewerStyles = StyleSheet.create({
         height: 60,
         borderRadius: 30,
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        borderWidth: 3,
+        borderColor: "black"
     },
     infoContainer: {
         alignSelf: "center",
@@ -100,6 +147,31 @@ const profileViewerStyles = StyleSheet.create({
     statsBox: {
         alignItems: "center",
         flex: 1
+    },
+    circleFrame: {
+        borderRadius: 127,
+        width: 190,
+        height: 190,
+        backgroundColor: '#4d7bb0',
+    },
+      videosContainer: {
+        margin: 0,
+        display: "flex",
+        flexDirection: "column",
+        alignContent: "flex-start",
+        // backgroundColor: "#eee"
+    },
+    sectionText: {
+        fontSize: 24,
+        padding: 10,
+        fontWeight: "500",
+        backgroundColor: "#ddd"
+    },
+    sectionTextBlank: {
+        fontSize: 24,
+        padding: 10,
+        fontWeight: "500",
+        backgroundColor: "white"
     },
 })
 
