@@ -50,6 +50,7 @@ const RegisterScreen = ({ navigation }) => {
                     };
                     ref.child(userId).set(newUser, () => {
                         if (type === userTypes[0]) {
+                            console.log("navigation to souschef");
                             navigation.navigate("SousChefMainScreen", {user: userCreds.user});
                         } else if (type === userTypes[1]) {
                             navigation.navigate("HeadChefMainScreen", {user: userCreds.user});

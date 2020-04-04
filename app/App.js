@@ -13,6 +13,7 @@ import * as firebase  from 'firebase';
 import UploadRecipeScreen from './components/UploadRecipeScreen';
 import SousChefAccountSettings from './components/SousChefAccountSettings';
 import SousChefPreferences from './components/SousChefPreferences';
+import ProfileViewer from './components/ProfileViewer';
 
 
 const App = () => {
@@ -89,7 +90,7 @@ const App = () => {
 					component={HeadChefMainScreen}
 					
 					options={{
-						title: "",
+						title: "", // THIS IS HOW YOU MAKE THE BACK BUTTON JUST SAY "BACK"
 						headerTitle: () => <Text style={appStyles.mainScreenTitle}>Welcome</Text>,
 						headerStyle: {
 							backgroundColor: '#eee',
@@ -100,6 +101,7 @@ const App = () => {
 					name={"YoutubeViewer"} 
 					component={YoutubeViewer}
 					options={{
+						title: "",
 						headerTitle: () => <Text style={appStyles.titleBlack}>Recipe</Text>,
 						headerStyle: {
 							backgroundColor: '#eee',
@@ -131,6 +133,16 @@ const App = () => {
 						headerStyle: {
 							backgroundColor: '#eee',
 						}
+					}} />
+				<Stack.Screen 
+					name={"ProfileViewer"} 
+					component={ProfileViewer}
+					options={{
+						headerTitle: () => <Text style={appStyles.titleBlack}>HeadChef Profile</Text>,
+						headerStyle: {
+							backgroundColor: '#eee',
+						},
+						
 					}} />
 			</Stack.Navigator>
 		</NavigationContainer>

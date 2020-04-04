@@ -10,7 +10,8 @@ import {
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from '@react-navigation/native';
 // import { TabNavigator } from '@react-navigation'
-import YoutubeViewer from './YoutubeViewer';
+import HeadChefUpload from './HeadChefUpload';
+import ProfileViewer from './ProfileViewer';
 import MealPreview from './MealPreview';
 
 const Tab = createBottomTabNavigator();
@@ -48,7 +49,7 @@ const HeadChefMainScreen = ({ route, navigation }) => {
                     length: v.time
                 }
             })
-            foodVideosInfo = foodVideosInfo.filter(v => v.headChef === "Cooking Foodie");
+            // foodVideosInfo = foodVideosInfo.filter(v => v.headChef === "Cooking Foodie");
             setVideos({
                 food: foodVideosInfo,
                 drink: []
@@ -83,9 +84,9 @@ const HeadChefTabNavigator = () => {
         <Tab.Navigator>
             <Tab.Screen name="Explore" component={HeadChefMainScreen} />
             <Tab.Screen name="DM" component={DMPlaceholder} />
-            <Tab.Screen name="Upload" component={UploadPlaceholder} />
+            <Tab.Screen name="Upload" component={HeadChefUpload} />
             <Tab.Screen name="Library" component={LibraryPlaceholder} />
-            <Tab.Screen name="Profile" component={ProfilePlaceholder} />
+            <Tab.Screen name="Profile" component={ProfileViewer} />
         </Tab.Navigator>
     )
 }
@@ -98,26 +99,10 @@ const DMPlaceholder = () => {
     )
 }
 
-const UploadPlaceholder = () => {
-    return (
-        <View>
-            <Text>Upload</Text>
-        </View>
-    )
-}
-
 const LibraryPlaceholder = () => {
     return (
         <View>
             <Text>Library</Text>
-        </View>
-    )
-}
-
-const ProfilePlaceholder = () => {
-    return (
-        <View>
-            <Text>Profile</Text>
         </View>
     )
 }
