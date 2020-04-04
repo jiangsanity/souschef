@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView, TouchableOpacity, Button } from "react-native";
 
 const SousChefAccountSettings = ({ route, navigation }) => {
     return (
@@ -17,6 +17,9 @@ const SousChefAccountSettings = ({ route, navigation }) => {
                             <Text style={accountSettingsStyles.text, {fontSize: 18}}>Name: George Maroun</Text>
                         </View>
                     </View>
+                    <View style={accountSettingsStyles.rightText}>
+                        <Button title="Change" style={accountSettingsStyles.text, {color: "#0000FF", fontSize: 8}}> </Button>
+                    </View>
                 </View>
 
                 <View style={accountSettingsStyles.optionWrapper} >
@@ -24,6 +27,9 @@ const SousChefAccountSettings = ({ route, navigation }) => {
                         <View style={accountSettingsStyles.leftText}>
                             <Text style={accountSettingsStyles.text, {fontSize: 18}}>Email: gmaroun30@gmail.com</Text>
                         </View>
+                    </View>
+                    <View style={accountSettingsStyles.rightText}>
+                        <Button title="Change" style={accountSettingsStyles.text, {color: "#0000FF", fontSize: 8}}> </Button>
                     </View>
                 </View>
 
@@ -33,6 +39,9 @@ const SousChefAccountSettings = ({ route, navigation }) => {
                             <Text style={accountSettingsStyles.text, {fontSize: 18}}>Password: pass</Text>
                         </View>
                     </View>
+                    <View style={accountSettingsStyles.rightText}>
+                        <Button title="Change" style={accountSettingsStyles.text, {color: "#0000FF", fontSize: 8}}> </Button>
+                    </View>
                 </View>
 
                 <View style={accountSettingsStyles.optionWrapper} >
@@ -40,6 +49,9 @@ const SousChefAccountSettings = ({ route, navigation }) => {
                         <View style={accountSettingsStyles.leftText}>
                             <Text style={accountSettingsStyles.text, {fontSize: 18}}>Mobile Number: (404)906-1139</Text>
                         </View>
+                    </View>
+                    <View style={accountSettingsStyles.rightText}>
+                        <Button title="Change" style={accountSettingsStyles.text, {color: "#0000FF", fontSize: 8}}> </Button>
                     </View>
                 </View>
 
@@ -74,6 +86,9 @@ const accountSettingsStyles = StyleSheet.create({
     },
     leftText: {
         padding: 5
+    },
+    rightText: {
+        padding: 11,
     },
     optionWrapper: {
         backgroundColor: "#fff",
