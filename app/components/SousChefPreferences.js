@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView, TouchableOpacity, Button, Alert} from "react-native";
 
 const SousChefPreferences = ({ route, navigation }) => {
     return (
@@ -17,6 +17,9 @@ const SousChefPreferences = ({ route, navigation }) => {
                             <Text style={PreferencesStyles.text, {fontSize: 18}}>Experience Level: Beginner</Text>
                         </View>
                     </View>
+                    <View style={PreferencesStyles.rightText}>
+                        <Button title="Change" onPress={() => Alert.alert('Change Name')} style={PreferencesStyles.text, {color: "#0000FF", fontSize: 8}}> </Button>
+                    </View>
                 </View>
 
                 <View style={PreferencesStyles.optionWrapper} >
@@ -25,13 +28,19 @@ const SousChefPreferences = ({ route, navigation }) => {
                             <Text style={PreferencesStyles.text, {fontSize: 18}}>Favorite Cuisines: Italian, Japanese</Text>
                         </View>
                     </View>
+                    <View style={PreferencesStyles.rightText}>
+                        <Button title="Change" style={PreferencesStyles.text, {color: "#0000FF", fontSize: 8}}> </Button>
+                    </View>
                 </View>
 
                 <View style={PreferencesStyles.optionWrapper} >
                     <View style={PreferencesStyles.leftWrapper} >
                         <View style={PreferencesStyles.leftText}>
-                            <Text style={PreferencesStyles.text, {fontSize: 18}}>Allergies & Restrictions: Nuts, Gluten</Text>
+                            <Text style={PreferencesStyles.text, {fontSize: 18}}>Allergies & Restrictions: Nuts</Text>
                         </View>
+                    </View>
+                    <View style={PreferencesStyles.rightText}>
+                        <Button title="Change" style={PreferencesStyles.text, {color: "#0000FF", fontSize: 8}}> </Button>
                     </View>
                 </View>
 
@@ -40,6 +49,9 @@ const SousChefPreferences = ({ route, navigation }) => {
                         <View style={PreferencesStyles.leftText}>
                             <Text style={PreferencesStyles.text, {fontSize: 18}}>Goals: Mixology, Master of Meats</Text>
                         </View>
+                    </View>
+                    <View style={PreferencesStyles.rightText}>
+                        <Button title="Change" style={PreferencesStyles.text, {color: "#0000FF", fontSize: 8}}> </Button>
                     </View>
                 </View>
 
@@ -73,6 +85,9 @@ const PreferencesStyles = StyleSheet.create({
     },
     leftText: {
         padding: 5
+    },
+    rightText: {
+        padding: 11,
     },
     optionWrapper: {
         backgroundColor: "#fff",
