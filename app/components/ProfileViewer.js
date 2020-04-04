@@ -27,7 +27,8 @@ const ProfileViewer = ({ route, navigation }) => {
 
                 <View style={profileViewerStyles.infoContainer}>
                     <Text style={[profileViewerStyles.text, { fontWeight: "200", fontSize: 36 }]}>The Cooking Foodie</Text>
-                    <Text style={[profileViewerStyles.text, { color: "#AEB5BC", fontSize: 14 }]}>Food-Tuber</Text>
+                    <Text style={[profileViewerStyles.text, { color: "#AEB5BC", fontSize: 18 }]}>Food-Tuber</Text>
+                    <Text style={[profileViewerStyles.text, { color: "#AEB5BC", fontSize: 14 }]}>Response Time: less than 30 mins</Text>
                 </View>
                 
                 <View style={profileViewerStyles.statsContainer}>
