@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView } from "react-native";
 import MealPreview from './MealPreview';
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 
 const ProfileViewer = ({ route, navigation }) => {
     return (
@@ -21,6 +21,7 @@ const ProfileViewer = ({ route, navigation }) => {
                     {/* <View style={profileViewerStyles.add}>
                         <Ionicons name="add-circle-outline"></Ionicons>
                     </View> */}
+                    <Image source={require("../assets/dm.png")} style={profileViewerStyles.dm} resizeMode="center"></Image>
                     <Image source={require("../assets/add-icon.png")} style={profileViewerStyles.add} resizeMode="center"></Image>
 
                 </View>
@@ -174,6 +175,19 @@ const profileViewerStyles = StyleSheet.create({
         fontWeight: "500",
         backgroundColor: "white"
     },
+    dm: {
+        backgroundColor: "#41444B",
+        position: "absolute",
+        top: 20,
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+        alignItems: "center",
+        justifyContent: "center",
+        borderWidth: 5,
+        borderColor: "#00FF00"
+    },
+    
 })
 
 export default ProfileViewer;
