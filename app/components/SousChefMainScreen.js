@@ -14,6 +14,7 @@ import SousChefMyProfile from './SousChefMyProfile';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from '@react-navigation/stack';
 import { StackActions } from '@react-navigation/native';
+import LiveShowScreen from './LiveShowScreen';
 
 
 const Tab = createBottomTabNavigator();
@@ -150,7 +151,7 @@ const SousChefTabNavigator = ({route, navigation}) => {
                 initialParams={{user: route.params.user}} />
             {/* <Tab.Screen name="Explore" component={AnotherPlaceholder} /> */}
             <Tab.Screen name="DM" component={DMPlaceholder} />
-            <Tab.Screen name="Live" component={LivePlaceholder} />
+            <Tab.Screen name="Live" component={LiveShowScreen} />
             <Tab.Screen
                 name="Favorites" 
                 component={Favorites}
