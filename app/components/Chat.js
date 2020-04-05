@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { GiftedChat } from 'react-native-gifted-chat';
 import { View, StyleSheet } from 'react-native';
 import Fire from './Fire';
+import LoginScreen from './LoginScreen';
 
 type Props = {
   name?: string,
@@ -17,7 +18,7 @@ static navigationOptions = ({ navigation }) => ({
     get user() {
         // Return our name and our UID for GiftedChat to parse
         return {
-//          name: this.props.navigation.state.params.name,
+          name: LoginScreen.getName(),
           _id: Fire.shared.uid,
         };
       }

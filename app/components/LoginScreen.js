@@ -13,8 +13,12 @@ import * as firebase from 'firebase';
 const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    state = {
+        name: '',
+      };
 
     const tryLogin = () => {
+
         firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
@@ -31,6 +35,8 @@ const LoginScreen = ({ navigation }) => {
                 });
             })
             .catch(err => Alert.alert(err.message));
+
+
     }
 
 	return (
