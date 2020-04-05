@@ -21,7 +21,7 @@ const YoutubeViewer = ({ route, navigation }) => {
 
 		userRef.once('value').then(snapshot => {
 			let userVal = snapshot.val();
-			if (userVal["favorites"] && userVal["favorites"].includes(videoID)) {
+			if (userVal["favorites"] && userVal["favorites"].includes([videoID, recipeName, headChef])) {
 				setFavorite(true);
 			}
 		});
@@ -36,16 +36,16 @@ const YoutubeViewer = ({ route, navigation }) => {
 		
 		userRef.once('value').then(snapshot => {
 			let userVal = snapshot.val();
-			
+			let favTemplate = [videoID, recipeName, headChef];
 			if (!userVal["favorites"]) {
 				// doesn't have any favorites --> add it
-				userRef.child("favorites").set([videoID]);
-			} else if (userVal["favorites"] && !userVal["favorites"].includes(videoID)) {
+				userRef.child("favorites").set([favTemplate]);
+			} else if (userVal["favorites"] && !userVal["favorites"].includes(favTemplate)) {
 				// has favorites but not this video --> add it
-				userRef.child("favorites").set([...userVal["favorites"], videoID]);
-			} else if (userVal["favorites"] && userVal["favorites"].includes(videoID)) {
+				userRef.child("favorites").set([...userVal["favorites"], favTemplate]);
+			} else if (userVal["favorites"] && userVal["favorites"].includes(favTemplate)) {
 				// has favorites that include this video --> remove it
-				userRef.child("favorites").set(userVal["favorites"].filter(id => id !== videoID));
+				userRef.child("favorites").set(userVal["favorites"].filter(id => id !== favTemplate[0]));
 			}
 		});
 	}
