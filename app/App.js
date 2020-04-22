@@ -13,6 +13,8 @@ import * as firebase  from 'firebase';
 import UploadRecipeScreen from './components/UploadRecipeScreen';
 import SousChefAccountSettings from './components/SousChefAccountSettings';
 import SousChefPreferences from './components/SousChefPreferences';
+import SousChefRedeemVoucher from './components/SousChefRedeemVoucher';
+import SousChefMyVouchers from './components/SousChefMyVouchers';
 import ProfileViewer from './components/ProfileViewer';
 
 
@@ -130,6 +132,24 @@ const App = () => {
 					component={SousChefPreferences}
 					options={{
 						headerTitle: () => <Text style={appStyles.titleBlack}>Preferences</Text>,
+						headerStyle: {
+							backgroundColor: '#eee',
+						}
+					}} />
+				<Stack.Screen 
+					name={"SousChefRedeemVoucher"} 
+					component={SousChefRedeemVoucher}
+					options={{
+						headerTitle: () => <Text style={appStyles.titleBlack}>Redeem A Voucher</Text>,
+						headerStyle: {
+							backgroundColor: '#eee',
+						}
+					}} />
+				<Stack.Screen 
+					name={"SousChefMyVouchers"} 
+					component={SousChefMyVouchers}
+					options={{
+						headerTitle: () => <Text style={appStyles.titleBlack}>My Vouchers</Text>,
 						headerStyle: {
 							backgroundColor: '#eee',
 						}
