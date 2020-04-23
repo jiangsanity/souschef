@@ -13,6 +13,16 @@ const SousChefMyProfile = ({ route, navigation }) => {
         });
     }
 
+    const showRedeem = (i) => {
+        navigation.navigate("SousChefRedeemVoucher", {
+        });
+    }
+
+    const showVouchers = (i) => {
+        navigation.navigate("SousChefMyVouchers", {
+        });
+    }
+
     return (
         <SafeAreaView style={profileViewerStyles.container}>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -69,6 +79,31 @@ const SousChefMyProfile = ({ route, navigation }) => {
                         <View style={profileViewerStyles.leftWrapper} >
                             <View style={profileViewerStyles.leftText}>
                                 <Text style={profileViewerStyles.text, {fontSize: 20}}>Preferences</Text>
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+
+                <View >
+                    <TouchableOpacity
+                        style={profileViewerStyles.optionWrapper} 
+                        onPress={showRedeem} >
+                        <View style={profileViewerStyles.leftWrapper} >
+                            <View style={profileViewerStyles.leftText}>
+                                <Text style={profileViewerStyles.text, {fontSize: 20}}>Redeem A Voucher</Text>
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+
+
+                <View >
+                    <TouchableOpacity
+                        style={profileViewerStyles.optionWrapper} 
+                        onPress={showVouchers} >
+                        <View style={profileViewerStyles.leftWrapper} >
+                            <View style={profileViewerStyles.leftText}>
+                                <Text style={profileViewerStyles.text, {fontSize: 20}}>My Vouchers</Text>
                             </View>
                         </View>
                     </TouchableOpacity>
