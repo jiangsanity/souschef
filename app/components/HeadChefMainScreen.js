@@ -13,6 +13,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import HeadChefUpload from './HeadChefUpload';
 import ProfileViewer from './ProfileViewer';
 import MealPreview from './MealPreview';
+import HeadChefMyProfile from './HeadChefMyProfile'
 
 const Tab = createBottomTabNavigator();
 
@@ -86,7 +87,7 @@ const HeadChefTabNavigator = () => {
             <Tab.Screen name="DM" component={DMPlaceholder} />
             <Tab.Screen name="Upload" component={HeadChefUpload} />
             <Tab.Screen name="Library" component={LibraryPlaceholder} />
-            <Tab.Screen name="Profile" component={ProfileViewer} />
+            <Tab.Screen name="Profile" component={HeadChefMyProfile} />
         </Tab.Navigator>
     )
 }
