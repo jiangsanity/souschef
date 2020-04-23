@@ -3,9 +3,12 @@ import {
 	StyleSheet,
     Text,
     TouchableOpacity,
-    View
+    View,
+    Image
 } from 'react-native';
 import YouTube from 'react-native-youtube';
+
+const thumbnailUri = {uri: "https://i.ytimg.com/vi/YxVZuuxxXxk/default.jpg"};
 
 const MealPreview = ({ recipeName, headChef, showVideoDetail, videoID, navigation }) => {
     return (
@@ -25,6 +28,7 @@ const MealPreview = ({ recipeName, headChef, showVideoDetail, videoID, navigatio
                     // onError={e => setError(e.error)}
                     style={mealPreviewStyles.videoPreview}
                 /> */}
+                    <Image source={thumbnailUri} style={mealPreviewStyles.videoPreview} />
                 </View>
                 <View style={mealPreviewStyles.leftText}>
                     <Text style={mealPreviewStyles.txt}>{recipeName}</Text>

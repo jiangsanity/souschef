@@ -33,7 +33,7 @@ const Favorites = ({ route, navigation }) => {
 			<View>
 				{favorites.map(videoID => {
 					return (
-						<Text>{videoID}</Text>
+						<Text key={videoID}>{videoID}</Text>
 					)
 				})}
 			</View>

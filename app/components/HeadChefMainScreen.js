@@ -16,6 +16,7 @@ import MealPreview from './MealPreview';
 
 const Tab = createBottomTabNavigator();
 
+
 const HeadChefMainScreen = ({ route, navigation }) => {
     // const { user } = route.params;
 
@@ -60,7 +61,7 @@ const HeadChefMainScreen = ({ route, navigation }) => {
 
     return (
 		<SafeAreaView style={headChefMainStyles.container}>
-			<Text style={headChefMainStyles.sectionText}>
+            <Text style={headChefMainStyles.sectionText}>
                 Food Recipes
             </Text>
             <View style={headChefMainStyles.videosContainer}>

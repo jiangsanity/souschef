@@ -5,7 +5,8 @@ import {
     Text,
     View,
     TabBarIOS,
-    ScrollView
+    ScrollView,
+    SegmentedControlIOS
 } from 'react-native';
 import MealPreview from './MealPreview';
 import YoutubeViewer from './YoutubeViewer';
@@ -15,6 +16,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from '@react-navigation/stack';
 import { StackActions } from '@react-navigation/native';
 
+const feedTypes = ["Following", "My Likes"]
+
+const THUMBNAIL_URL = "https://i.ytimg.com/vi/YxVZuuxxXxk/default.jp";
 
 const Tab = createBottomTabNavigator();
 
@@ -31,6 +35,7 @@ const SousChefMainScreen = ({ route, navigation }) => {
         food: [],
         drink: []
     });
+    const [feedType, setFeedType] = useState(feedTypes[0]);
 
     const showVideoDetail = (i) => {
         navigation.navigate("YoutubeViewer", {
@@ -104,6 +109,13 @@ const SousChefMainScreen = ({ route, navigation }) => {
 
     return (
 		<SafeAreaView style={sousChefMainStyles.container}>
+            <SegmentedControlIOS 
+                values={feedTypes}
+                selectedIndex={feedTypes.indexOf(feedType)}
+                style={sousChefMainStyles.segmented}
+                onChange={(event) => {
+                    setFeedType(feedTypes[event.nativeEvent.selectedSegmentIndex]);
+                }} />
             <ScrollView>
                 <Text style={sousChefMainStyles.sectionText}>
                     Food Recipes
@@ -242,7 +254,10 @@ const sousChefMainStyles = StyleSheet.create({
         display: "flex",
         flexDirection: "column",
         alignContent: "flex-start",
-        // backgroundColor: "#eee"
+    },
+    segmented: {
+        height: 40, 
+        borderColor: 'white', 
     },
 });
 
