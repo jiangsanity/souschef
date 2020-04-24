@@ -11,45 +11,81 @@ import {
 } from 'react-native';
 
 const HeadChefActiveVouchers = ({ route, navigation }) => {
+    const viewVoucher = () => {
+        navigation.navigate("VoucherView", {
+        });
+    }
 
     return (
         <SafeAreaView style={activeVoucherStyles.container}>
-            <ScrollView style={activeVoucherStyles.scrollview}>
-                <View style={activeVoucherStyles.spacer} />
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <View >
-                    <Text style={activeVoucherStyles.txt}>I am a ...</Text>
+                    <TouchableOpacity
+                        style={activeVoucherStyles.optionWrapper}
+                        >
+                        <View style={activeVoucherStyles.leftWrapper} >
+                            <View style={activeVoucherStyles.leftText}>
+                                <Text style={activeVoucherStyles.text, {fontSize: 20, fontWeight: 'bold'}}>TOMATOKING</Text>
+                                <Text style={activeVoucherStyles.text, {fontSize: 12, color: "orange"}}>Ends: 08-01-2020</Text>
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={activeVoucherStyles.optionWrapper}
+                        >
+                        <View style={activeVoucherStyles.leftWrapper} >
+                            <View style={activeVoucherStyles.leftText}>
+                                <Text style={activeVoucherStyles.text, {fontSize: 20, fontWeight: 'bold'}}>CANOLI22</Text>
+                                <Text style={activeVoucherStyles.text, {fontSize: 12, color: "red"}}>Ends: 05-23-2020</Text>
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={activeVoucherStyles.optionWrapper}
+                        onPress={viewVoucher}
+                        >
+                        <View style={activeVoucherStyles.leftWrapper} >
+                            <View style={activeVoucherStyles.leftText}>
+                                <Text style={activeVoucherStyles.text, {fontSize: 20, fontWeight: 'bold'}}>FARFARINA</Text>
+                                <Text style={activeVoucherStyles.text, {fontSize: 12, color: "orange"}}>Ends: 09-18-2020</Text>
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={activeVoucherStyles.optionWrapper}
+                        >
+                        <View style={activeVoucherStyles.leftWrapper} >
+                            <View style={activeVoucherStyles.leftText}>
+                                <Text style={activeVoucherStyles.text, {fontSize: 20, fontWeight: 'bold'}}>FARINA20</Text>
+                                <Text style={activeVoucherStyles.text, {fontSize: 12, color: "green"}}>Ends: 04-23-2021</Text>
+                            </View>
+                        </View>
+                    </TouchableOpacity>
                 </View>
-                <InputFieldAndLabel 
-                    fieldName={"Name"}
-                    fieldValue={name}
-                    setFieldValue={setName}
-                    secure={false} />
-                <InputFieldAndLabel 
-                    fieldName={"Email"}
-                    fieldValue={email}
-                    setFieldValue={setEmail}
-                    secure={false} />
-                <InputFieldAndLabel 
-                    fieldName={"Password"}
-                    fieldValue={password}
-                    setFieldValue={setPassword}
-                    secure={true} />
-                <InputFieldAndLabel 
-                    fieldName={"Confirm Password"}
-                    fieldValue={confirmPassword}
-                    setFieldValue={setConfirmPassword}
-                    secure={true} />
-                <TouchableOpacity 
-                    style={activeVoucherStyles.button}
-                    onPress={onPressHandler} >
-                    <Text style={activeVoucherStyles.txt2}>Register</Text>
-                </TouchableOpacity>
+                
             </ScrollView>
 		</SafeAreaView>
     );
 }
 
 activeVoucherStyles = StyleSheet.create({
+    text: {
+        fontFamily: "HelveticaNeue",
+        color: "#52575D",
+        fontWeight: 'bold',
+    },
+    container: {
+        flex: 1,
+        backgroundColor: "#FFF"
+    },
+    leftWrapper: {
+        display: "flex",
+        flexDirection: "row",
+    },
+    leftText: {
+        padding: 5
+    },
+
     scrollview: {
         marginHorizontal: 30,
         width: "75%"
@@ -62,15 +98,6 @@ activeVoucherStyles = StyleSheet.create({
     },
     spacer: {
         height: 20
-    },
-	container: {
-		backgroundColor: '#4d7bb0',
-		width: '100%',
-        height: '100%',
-        flexDirection: 'column',
-        flex: 1,
-        alignItems: 'center',
-        padding: 50
     },
     titleText: {
         color: 'white',
@@ -98,6 +125,20 @@ activeVoucherStyles = StyleSheet.create({
         margin: 20,
         padding: 10,
         borderRadius: 5
+    },
+    optionWrapper: {
+        backgroundColor: "#fff",
+        padding: 10,
+        paddingTop: 15,
+        paddingBottom: 15,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        borderColor: "gray",
+        borderTopWidth: 1,
+        borderBottomColor: "#ccc",
+        borderBottomWidth: 1,
     },
 });
 

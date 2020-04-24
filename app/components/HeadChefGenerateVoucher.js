@@ -7,6 +7,11 @@ import ImagePicker from 'react-native-image-picker';
 
 
 const HeadChefGenerateVoucher = ({ route, navigation }) => {
+    const handleGenerate = () => { 
+       Alert.alert('Code Generated! Keep track of your codes under "Profile" and under "My Active Vouchers"');
+       navigation.navigate("HeadChefMyProfile", {});
+    }
+
     const launchImagePicker = () => {
         ImagePicker.showImagePicker({'mediaType': 'video'}, (response) => {
             console.log('Response = ', response);
@@ -100,8 +105,8 @@ const HeadChefGenerateVoucher = ({ route, navigation }) => {
                     style={generateVoucherStyles.button}>
                     <Text style={generateVoucherStyles.txt2}>Upload Handout</Text>
                 </TouchableOpacity>
-                <TouchableOpacity 
-                    style={generateVoucherStyles.selectButton} >
+                <TouchableOpacity onPress={handleGenerate} 
+                    style={generateVoucherStyles.selectButton}>
                     <Text style={generateVoucherStyles.txt2}>Create</Text>
                 </TouchableOpacity>
             </ScrollView>
