@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView, Alert, TouchableOpacity } from "react-native";
 import MealPreview from './MealPreview';
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 
@@ -22,8 +22,9 @@ const ProfileViewer = ({ route, navigation }) => {
                         <Ionicons name="add-circle-outline"></Ionicons>
                     </View> */}
                     <Image source={require("../assets/dm.png")} style={profileViewerStyles.dm} resizeMode="center"></Image>
-                    <Image source={require("../assets/add-icon.png")} style={profileViewerStyles.add} resizeMode="center"></Image>
-
+                    <TouchableOpacity style={profileViewerStyles.add2} onPress={() => Alert.alert('Followed The Cooking Foodie')} >
+                        <Image source={require("../assets/add-icon.png")} style={profileViewerStyles.add} resizeMode="center"></Image>
+                    </TouchableOpacity>
                 </View>
 
                 <View style={profileViewerStyles.infoContainer}>
@@ -121,7 +122,7 @@ const profileViewerStyles = StyleSheet.create({
         overflow: "hidden",
         resizeMode: 'contain',
         borderWidth: 3,
-        borderColor: "black"
+        borderColor: "black", 
     },
     add: {
         backgroundColor: "#41444B",
@@ -135,6 +136,17 @@ const profileViewerStyles = StyleSheet.create({
         justifyContent: "center",
         borderWidth: 3,
         borderColor: "black"
+    },
+    add2: {
+        position: "absolute",
+        bottom: 0,
+        right: 0,
+        width: 62,
+        height: 62,
+        borderRadius: 31,
+        alignItems: "center",
+        justifyContent: "center",
+        borderWidth: 0,
     },
     infoContainer: {
         alignSelf: "center",
