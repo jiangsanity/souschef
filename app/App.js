@@ -15,6 +15,7 @@ import SousChefAccountSettings from './components/SousChefAccountSettings';
 import SousChefPreferences from './components/SousChefPreferences';
 import SousChefRedeemVoucher from './components/SousChefRedeemVoucher';
 import SousChefMyVouchers from './components/SousChefMyVouchers';
+import SousChefMyProfile from './components/SousChefMyProfile';
 import HeadChefActiveVouchers from './components/HeadChefActiveVouchers'
 import HeadChefGenerateVoucher from './components/HeadChefGenerateVoucher';
 import HeadChefMyProfile from './components/HeadChefMyProfile';
@@ -126,6 +127,7 @@ const App = () => {
 					name={"SousChefAccountSettings"} 
 					component={SousChefAccountSettings}
 					options={{
+						title: "",
 						headerTitle: () => <Text style={appStyles.titleBlack}>Account Settings</Text>,
 						headerStyle: {
 							backgroundColor: '#eee',
@@ -135,7 +137,18 @@ const App = () => {
 					name={"SousChefPreferences"} 
 					component={SousChefPreferences}
 					options={{
+						title: "",
 						headerTitle: () => <Text style={appStyles.titleBlack}>Preferences</Text>,
+						headerStyle: {
+							backgroundColor: '#eee',
+						}
+					}} />
+				<Stack.Screen 
+					name={"SousChefMyProfile"} 
+					component={SousChefMyProfile}
+					options={{
+						title: "",
+						headerTitle: () => <Text style={appStyles.titleBlack}></Text>,
 						headerStyle: {
 							backgroundColor: '#eee',
 						}
@@ -144,6 +157,7 @@ const App = () => {
 					name={"HeadChefActiveVouchers"} 
 					component={HeadChefActiveVouchers}
 					options={{
+						title: "",
 						headerTitle: () => <Text style={appStyles.titleBlack}>Active Vouchers</Text>,
 						headerStyle: {
 							backgroundColor: '#eee',
@@ -153,6 +167,7 @@ const App = () => {
 					name={"HeadChefGenerateVoucher"} 
 					component={HeadChefGenerateVoucher}
 					options={{
+						title: "",
 						headerTitle: () => <Text style={appStyles.titleBlack}>Generate Voucher</Text>,
 						headerStyle: {
 							backgroundColor: '#eee',
@@ -162,6 +177,7 @@ const App = () => {
 					name={"HeadChefMyProfile"} 
 					component={HeadChefMyProfile}
 					options={{
+						title: "",
 						headerTitle: () => <Text style={appStyles.titleBlack}>Profile Voucher</Text>,
 						headerStyle: {
 							backgroundColor: '#eee',
@@ -171,6 +187,7 @@ const App = () => {
 					name={"SousChefRedeemVoucher"} 
 					component={SousChefRedeemVoucher}
 					options={{
+						title: "",
 						headerTitle: () => <Text style={appStyles.titleBlack}>Redeem A Voucher</Text>,
 						headerStyle: {
 							backgroundColor: '#eee',
@@ -180,6 +197,7 @@ const App = () => {
 					name={"SousChefMyVouchers"} 
 					component={SousChefMyVouchers}
 					options={{
+						title: "",
 						headerTitle: () => <Text style={appStyles.titleBlack}>My Vouchers</Text>,
 						headerStyle: {
 							backgroundColor: '#eee',
@@ -189,6 +207,7 @@ const App = () => {
 					name={"VoucherView"} 
 					component={VoucherView}
 					options={{
+						title: "",
 						headerTitle: () => <Text style={appStyles.titleBlack}></Text>,
 						headerStyle: {
 							backgroundColor: '#eee',
