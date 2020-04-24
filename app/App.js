@@ -15,6 +15,8 @@ import SousChefAccountSettings from './components/SousChefAccountSettings';
 import SousChefPreferences from './components/SousChefPreferences';
 import SousChefRedeemVoucher from './components/SousChefRedeemVoucher';
 import SousChefMyVouchers from './components/SousChefMyVouchers';
+import HeadChefActiveVouchers from './components/HeadChefActiveVouchers'
+import HeadChefGenerateVoucher from './components/HeadChefGenerateVoucher'
 import ProfileViewer from './components/ProfileViewer';
 
 
@@ -132,6 +134,24 @@ const App = () => {
 					component={SousChefPreferences}
 					options={{
 						headerTitle: () => <Text style={appStyles.titleBlack}>Preferences</Text>,
+						headerStyle: {
+							backgroundColor: '#eee',
+						}
+					}} />
+				<Stack.Screen 
+					name={"HeadChefActiveVouchers"} 
+					component={HeadChefActiveVouchers}
+					options={{
+						headerTitle: () => <Text style={appStyles.titleBlack}>Active Vouchers</Text>,
+						headerStyle: {
+							backgroundColor: '#eee',
+						}
+					}} />
+				<Stack.Screen 
+					name={"HeadChefGenerateVoucher"} 
+					component={HeadChefGenerateVoucher}
+					options={{
+						headerTitle: () => <Text style={appStyles.titleBlack}>Generate Voucher</Text>,
 						headerStyle: {
 							backgroundColor: '#eee',
 						}

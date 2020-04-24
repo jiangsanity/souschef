@@ -33,7 +33,7 @@ const HeadChefMyProfile = ({ route, navigation }) => {
 
                 <View style={{ alignSelf: "center" }}>
                     <View style={profileViewerStyles.profileImage}>
-                        <Image source={require("../assets/profile-pic.jpg")} style={profileViewerStyles.image} resizeMode="center"></Image>
+                        <Image source={require("../assets/italian-restaurant.png")} style={profileViewerStyles.image} resizeMode="center"></Image>
                     </View>
                     {/* <View style={profileViewerStyles.add}>
                         <Ionicons name="ios-add" size={48} color="#DFD8C8" style={{ marginTop: 6, marginLeft: 2 }}></Ionicons>
@@ -41,8 +41,8 @@ const HeadChefMyProfile = ({ route, navigation }) => {
                 </View>
 
                 <View style={profileViewerStyles.infoContainer}>
-                    <Text style={[profileViewerStyles.text, { fontWeight: "200", fontSize: 36 }]}>George Maroun</Text>
-                    <Text style={[profileViewerStyles.text, { color: "#AEB5BC", fontSize: 14 }]}>SousChef</Text>
+                    <Text style={[profileViewerStyles.text, { fontWeight: "200", fontSize: 36 }]}>La Farina</Text>
+                    <Text style={[profileViewerStyles.text, { color: "#AEB5BC", fontSize: 14 }]}>Restaurant</Text>
                 </View>
                 
                 <View style={profileViewerStyles.statsContainer}>
@@ -51,12 +51,12 @@ const HeadChefMyProfile = ({ route, navigation }) => {
                         <Text style={[profileViewerStyles.text, profileViewerStyles.subText]}>Videos</Text>
                     </View> */}
                     <View style={[profileViewerStyles.statsBox, { borderColor: "#DFD8C8", borderLeftWidth: 1, borderRightWidth: 1 }]}>
-                        <Text style={[profileViewerStyles.text, { fontSize: 24 }]}>300</Text>
+                        <Text style={[profileViewerStyles.text, { fontSize: 24 }]}>583</Text>
                         <Text style={[profileViewerStyles.text, profileViewerStyles.subText]}>Followers</Text>
                     </View>
                     <View style={profileViewerStyles.statsBox}>
-                        <Text style={[profileViewerStyles.text, { fontSize: 24 }]}>4 Years</Text>
-                        <Text style={[profileViewerStyles.text, profileViewerStyles.subText]}>As SousChef</Text>
+                        <Text style={[profileViewerStyles.text, { fontSize: 24 }]}>22 Years</Text>
+                        <Text style={[profileViewerStyles.text, profileViewerStyles.subText]}>Since 1998</Text>
                     </View>
                 </View>
                 <View style={profileViewerStyles.statsContainer} />
@@ -143,7 +143,9 @@ const profileViewerStyles = StyleSheet.create({
         width: 180,
         height: 180,
         borderRadius: 120,
-        overflow: "hidden"
+        overflow: "hidden",
+        borderWidth: 3,
+        borderColor: "black", 
     },
     add: {
         backgroundColor: "#4d7bb0",
