@@ -21,6 +21,7 @@ import HeadChefGenerateVoucher from './components/HeadChefGenerateVoucher';
 import HeadChefMyProfile from './components/HeadChefMyProfile';
 import ProfileViewer from './components/ProfileViewer';
 import VoucherView from './components/VoucherView';
+import UnlockedProfileViewer from './components/UnlockedProfileViewer'
 
 
 const App = () => {
@@ -217,6 +218,18 @@ const App = () => {
 					name={"ProfileViewer"} 
 					component={ProfileViewer}
 					options={{
+						title: "",
+						headerTitle: () => <Text style={appStyles.titleBlack}>HeadChef Profile</Text>,
+						headerStyle: {
+							backgroundColor: '#eee',
+						},
+						
+					}} />
+				<Stack.Screen 
+					name={"UnlockedProfileViewer"} 
+					component={UnlockedProfileViewer}
+					options={{
+						title: "",
 						headerTitle: () => <Text style={appStyles.titleBlack}>HeadChef Profile</Text>,
 						headerStyle: {
 							backgroundColor: '#eee',
