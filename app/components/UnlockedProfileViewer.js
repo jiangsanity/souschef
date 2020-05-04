@@ -29,11 +29,10 @@ const ProfileViewer = ({ route, navigation }) => {
                     <TouchableOpacity style={profileViewerStyles.add3} onPress={() => Alert.alert(
                         Alert.alert(
                             "Subscribe",
-                            "Do you want to subscribe to: Cooking Foodie?",
+                            "Do you want to UNsubscribe to: Cooking Foodie?",
                             [
                               {
-                                text: "Subscribe Now: $0.99/mo",
-                                onPress: () => navigation.navigate("UnlockedProfileViewer", {})
+                                text: "Unsubscribe Now",
                               },
                               {
                                 text: "Cancel",
@@ -73,15 +72,15 @@ const ProfileViewer = ({ route, navigation }) => {
                     Food Recipes
                 </Text>
                 <View style={profileViewerStyles.videosContainer}>
-                    <LockedMealPreview 
+                    <MealPreview 
                         recipeName={"Nigerian Meat Pie"}
                         headChef={"Cooking Foodie"}
                     />
-                    <LockedMealPreview 
+                    <MealPreview 
                         recipeName={"Vanilla Cupcakes"}
                         headChef={"Cooking Foodie"}
                     />
-                    <LockedMealPreview 
+                    <MealPreview 
                         recipeName={"Cornbread"}
                         headChef={"Cooking Foodie"}
                     />

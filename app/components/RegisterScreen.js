@@ -14,9 +14,11 @@ import * as firebase from 'firebase';
 
 
 const userTypes = ["SousChef", "HeadChef"];
+const headChefTypes = ["Individual", "Restaurant"]
 
 const RegisterScreen = ({ navigation }) => {
     const [type, setType] = useState(userTypes[0]);
+    const [hType, setHType] = useState(headChefTypes[0])
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -81,6 +83,15 @@ const RegisterScreen = ({ navigation }) => {
                     onChange={(event) => {
                         setType(userTypes[event.nativeEvent.selectedSegmentIndex]);
                     }} />
+                <SegmentedControlIOS 
+                    values={headChefTypes}
+                    selectedIndex={headChefTypes.indexOf(hType)}
+                    style={registerStyles.segmented}
+                    // enabled={false}
+                    onChange={(event) => {
+                        setHType(headChefTypes[event.nativeEvent.selectedSegmentIndex]);
+                    }} 
+                    />
                 <InputFieldAndLabel 
                     fieldName={"Name"}
                     fieldValue={name}

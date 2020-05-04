@@ -10,7 +10,7 @@ import {
     ScrollView,
 } from 'react-native';
 
-const SousChefMyVouchers = ({ route, navigation }) => {
+const HeadChefActiveVouchers = ({ route, navigation }) => {
     const viewVoucher = () => {
         navigation.navigate("VoucherView", {
         });
@@ -22,12 +22,42 @@ const SousChefMyVouchers = ({ route, navigation }) => {
                 <View >
                     <TouchableOpacity
                         style={activeVoucherStyles.optionWrapper}
+                        >
+                        <View style={activeVoucherStyles.leftWrapper} >
+                            <View style={activeVoucherStyles.leftText}>
+                                <Text style={activeVoucherStyles.text, {fontSize: 20, fontWeight: 'bold'}}>TOMATOKING</Text>
+                                <Text style={activeVoucherStyles.text, {fontSize: 12, color: "orange"}}>Ends: 08-01-2020</Text>
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={activeVoucherStyles.optionWrapper}
+                        >
+                        <View style={activeVoucherStyles.leftWrapper} >
+                            <View style={activeVoucherStyles.leftText}>
+                                <Text style={activeVoucherStyles.text, {fontSize: 20, fontWeight: 'bold'}}>CANOLI22</Text>
+                                <Text style={activeVoucherStyles.text, {fontSize: 12, color: "red"}}>Ends: 05-23-2020</Text>
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={activeVoucherStyles.optionWrapper}
                         onPress={viewVoucher}
                         >
                         <View style={activeVoucherStyles.leftWrapper} >
                             <View style={activeVoucherStyles.leftText}>
                                 <Text style={activeVoucherStyles.text, {fontSize: 20, fontWeight: 'bold'}}>FARFARINA</Text>
                                 <Text style={activeVoucherStyles.text, {fontSize: 12, color: "orange"}}>Ends: 09-18-2020</Text>
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={activeVoucherStyles.optionWrapper}
+                        >
+                        <View style={activeVoucherStyles.leftWrapper} >
+                            <View style={activeVoucherStyles.leftText}>
+                                <Text style={activeVoucherStyles.text, {fontSize: 20, fontWeight: 'bold'}}>FARINA20</Text>
+                                <Text style={activeVoucherStyles.text, {fontSize: 12, color: "green"}}>Ends: 04-23-2021</Text>
                             </View>
                         </View>
                     </TouchableOpacity>
@@ -112,4 +142,4 @@ activeVoucherStyles = StyleSheet.create({
     },
 });
 
-export default SousChefMyVouchers;
+export default HeadChefActiveVouchers;

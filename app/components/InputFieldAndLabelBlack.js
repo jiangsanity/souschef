@@ -6,7 +6,7 @@ import {
     View
 } from 'react-native';
 
-const InputFieldAndLabel = ({ fieldName, fieldValue, setFieldValue, secure }) => {
+const InputFieldAndLabelBlack = ({ fieldName, fieldValue, setFieldValue, secure }) => {
     return (
         <View>
             <Text style={registerStyles.txt}>{fieldName}</Text>
@@ -28,11 +28,9 @@ inputStyles = StyleSheet.create({
         height: 40,
         fontSize: 15,
         color: "white",
-        padding: 10,
-        marginBottom: 40,
         borderRadius: 5
     },
 
 });
 
-export default InputFieldAndLabel;
+export default InputFieldAndLabelBlack;
